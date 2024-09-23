@@ -11,10 +11,10 @@ interface Props {
   onClick?: () => void;
 
   /** Is the button actionable? */
-  disabled: boolean;
+  disabled?: boolean;
 
   /** The icon category of FontAwesome library. This can be the "fas" solid icons or the "fab" brand icons. */
-  icon_prefix: IconPrefix;
+  icon_prefix?: IconPrefix;
 
   /** The icon name from the FontAwesome library. */
   icon: string;

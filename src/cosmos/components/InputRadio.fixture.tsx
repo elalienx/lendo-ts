@@ -1,5 +1,5 @@
 // Project files
-import InputRadio from "../../components/input-radio/InputRadio";
+import InputRadio from "components/input-radio/InputRadio";
 
 // Properties
 const colorOptions = ["red", "green", "blue"];

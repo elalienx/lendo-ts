@@ -1,10 +1,20 @@
+// Node modules
+import { ReactNode } from "react";
+
 // Project file
-import ItemCart from "../../components/item-cart/ItemCart";
+import ItemCart from "components/item-cart/ItemCart";
 
 // Decorators
-function DecoratorPage({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+function DecoratorPage({ children }: Props) {
   return (
-    <div className="page" style={{ maxWidth: "1200px", width: "100%", display: "grid", placeItems: "center" }}>
+    <div
+      className="page"
+      style={{ maxWidth: "1200px", width: "100%", display: "grid", placeItems: "center" }}
+    >
       {children}
     </div>
   );

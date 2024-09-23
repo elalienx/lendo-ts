@@ -11,7 +11,7 @@ interface Props {
   number: number;
 }
 
-export default function NavigationBar({ number = 0 }: Props) {
+export default function NavigationBar({ number }: Props) {
   return (
     <nav className="navigation-bar">
       <Link to="/">

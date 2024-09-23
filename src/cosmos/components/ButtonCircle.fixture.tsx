@@ -1,5 +1,5 @@
 // Project files
-import ButtonCircle from "../../components/button-circle/ButtonCircle";
+import ButtonCircle from "components/button-circle/ButtonCircle";
 
 // Properties
 function onClick() {

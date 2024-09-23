@@ -1,5 +1,5 @@
 // Project files
-import Radio from "../../components/input-radio/Radio";
+import Radio from "components/input-radio/Radio";
 
 // Properties
 const id = "color";

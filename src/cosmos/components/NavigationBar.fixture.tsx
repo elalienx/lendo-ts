@@ -1,14 +1,22 @@
 // Node modules
+import { ReactNode } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 // Project files
-import NavigationBar from "../../components/navigation-bar/NavigationBar";
+import NavigationBar from "components/navigation-bar/NavigationBar";
 
 // Decorators
-function DecoratorRouter({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+function DecoratorRouter({ children }: Props) {
   return (
     <BrowserRouter>
-      <div className="page" style={{ maxWidth: "1200px", width: "100%", display: "grid", placeItems: "center" }}>
+      <div
+        className="page"
+        style={{ maxWidth: "1200px", width: "100%", display: "grid", placeItems: "center" }}
+      >
         {children}
       </div>
     </BrowserRouter>
@@ -18,7 +26,7 @@ function DecoratorRouter({ children }) {
 export default {
   NoItemsInCart: (
     <DecoratorRouter>
-      <NavigationBar />
+      <NavigationBar number={0} />
     </DecoratorRouter>
   ),
   FewItems: (

@@ -1,5 +1,5 @@
 // Project files
-import PriceTag from "../../components/price-tag/PriceTag";
+import PriceTag from "components/price-tag/PriceTag";
 
 export default {
   NoAmmount: <PriceTag price={0} />,

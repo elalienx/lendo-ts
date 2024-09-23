@@ -2,7 +2,7 @@
 import { BrowserRouter } from "react-router-dom";
 
 // Project files
-import ItemProduct from "../../components/item-product/ItemProduct";
+import ItemProduct from "components/item-product/ItemProduct";
 
 // Properties
 const goodProduct = {

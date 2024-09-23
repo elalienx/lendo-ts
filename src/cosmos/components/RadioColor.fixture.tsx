@@ -1,5 +1,5 @@
 // Project files
-import RadioColor from "../../components/input-radio-color/RadioColor";
+import RadioColor from "components/input-radio-color/RadioColor";
 
 // Properties
 const id = "color";

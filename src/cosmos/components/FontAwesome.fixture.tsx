@@ -1,5 +1,5 @@
 // Project files
-import FontAwesomeIcon from "../../components/font-awesome/FontAwesomeIcon";
+import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
 
 export default {
   NoIcon: <FontAwesomeIcon icon={["fas", "i-dont-exist"]} />,

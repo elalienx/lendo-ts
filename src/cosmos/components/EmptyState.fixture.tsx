@@ -1,5 +1,5 @@
 // Project files
-import EmptyState from "../../components/empty-state/EmptyState";
+import EmptyState from "components/empty-state/EmptyState";
 
 // Properties
 const home = {
