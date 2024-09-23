@@ -1,18 +1,17 @@
 // Node modules
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 // Project files
-import Logo from "../../assets/images/logo.svg";
-import ButtonCart from "../button-cart/ButtonCart";
+import Logo from "assets/images/logo.svg";
+import ButtonCart from "components/button-cart/ButtonCart";
 import "./navigation-bar.css";
 
-NavigationBar.propTypes = {
+interface Props {
   /** The number of items the user has in the shopping cart. */
-  number: number,
-};
+  number: number;
+}
 
-export default function NavigationBar({ number = 0 }) {
+export default function NavigationBar({ number = 0 }: Props) {
   return (
     <nav className="navigation-bar">
       <Link to="/">

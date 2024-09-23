@@ -1,17 +1,18 @@
 // Node modules
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 // Project files
-import ImageThumbnail from "../image-thumbnail/ImageThumbnail";
-import NotAvailable from "../not-available/NotAvailable";
-import PriceTag from "../price-tag/PriceTag";
-import Product from "../../propTypes/Product";
+import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
+import NotAvailable from "components/not-available/NotAvailable";
+import PriceTag from "components/price-tag/PriceTag";
+import type Product from "types/Product";
 import "./item-product.css";
 
-ItemProduct.propTypes = Product;
+interface Props {
+  item: Product;
+}
 
-export default function ItemProduct({ item }) {
+export default function ItemProduct({ item }: Props) {
   const { id, name, brand, available, price } = item;
 
   // Properties
