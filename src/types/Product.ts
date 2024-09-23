@@ -2,6 +2,7 @@
 import type ProductOption from "./ProductOption";
 
 export default interface Product {
+  /** The unique identifier */
   id: number;
 
   /** The product name. */

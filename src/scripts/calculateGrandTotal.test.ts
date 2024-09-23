@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 
 // Project files
 import calculateGrandTotal from "./calculateGrandTotal";
+import Cart from "types/Cart";
 
 // test, shows an error if the ammount of matching products does not equal the ammount of items in the cart
 
@@ -50,7 +51,7 @@ test("Shows an error if the ammount of products does not match the amount of ite
       ],
     },
   ];
-  const cart = [{ id: 1, color: 0, variant: 0, quantity: 3 }]; // only 1 item when there should be 2
+  const cart: Cart[] = [{ product_id: 1, color_index: 0, variant: 0, quantity: 3 }]; // only 1 item when there should be 2
   const result = "There is a mismatch between the amount of products and items in the cart.";
 
   // Act
@@ -84,7 +85,7 @@ test("Correctly calculates the grand total of 1 quantity of 1 product in the sho
       ],
     },
   ];
-  const cart = [{ id: 1, color: 0, variant: 0, quantity: 1 }]; // product: Philips hue bulb, price: 500, color: white, variant (power): 6.5, quantity: 1
+  const cart: Cart[] = [{ product_id: 1, color_index: 0, variant: 0, quantity: 1 }]; // product: Philips hue bulb, price: 500, color: white, variant (power): 6.5, quantity: 1
   const result = 500;
 
   // Act
@@ -118,7 +119,7 @@ test("Correctly calculates the grand total of 3 quantity of 1 product in the sho
       ],
     },
   ];
-  const cart = [{ id: 1, color: 0, variant: 0, quantity: 3 }]; // product: Philips hue bulb, price: 500, color: white, variant (power): 6.5, quantity: 3
+  const cart: Cart[] = [{ product_id: 1, color_index: 0, variant: 0, quantity: 3 }]; // product: Philips hue bulb, price: 500, color: white, variant (power): 6.5, quantity: 3
   const result = 1500; // because we are buying the same product 3 times, and it cost 500 per unit.
 
   // Act
@@ -194,10 +195,10 @@ test("Correctly calculates the grand total of several products in the shopping c
       ],
     },
   ];
-  const cart = [
-    { id: 1, color: 0, variant: 0, quantity: 3 }, //   500 x 3 =  1,500
-    { id: 5, color: 0, variant: 1, quantity: 2 }, // 5,000 x 2 = 10,000
-    { id: 2, color: 1, variant: 1, quantity: 1 }, //   800 x 1 =    800
+  const cart: Cart[] = [
+    { product_id: 1, color_index: 0, variant: 0, quantity: 3 }, //   500 x 3 =  1,500
+    { product_id: 5, color_index: 0, variant: 1, quantity: 2 }, // 5,000 x 2 = 10,000
+    { product_id: 2, color_index: 1, variant: 1, quantity: 1 }, //   800 x 1 =    800
   ];
   const result = 12300; // 1,500 + 10,000 + 800
 
