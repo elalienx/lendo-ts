@@ -22,7 +22,7 @@ export default function ItemProduct({ item }: Props) {
   return (
     <Link to={link} className={`item-product ${!available && "dissabled"}`}>
       {/* Left mobile, top desktop */}
-      <ImageThumbnail />
+      <ImageThumbnail image={""} alt={""} />
 
       {/* Middle */}
       <div className="text-group">

@@ -43,7 +43,7 @@ export default function ItemCart({ product, item, index, dispatch }: Props) {
   // Properties
   const option = product.options[color]; // color acts as index
   const quantityAvailable = option.quantity;
-  const subTotal = product.price * quantity;
+  const subTotal = Number(product.price) * quantity;
   const buttonMinusIsEnabled = quantity === 1;
   const buttonAddIsEnabled = quantity >= quantityAvailable;
 
@@ -58,7 +58,7 @@ export default function ItemCart({ product, item, index, dispatch }: Props) {
   return (
     <article className="item-cart">
       {/* Left */}
-      <ImageThumbnail />
+      <ImageThumbnail image={""} alt={""} />
 
       {/* Middle */}
       <div className="text-group">

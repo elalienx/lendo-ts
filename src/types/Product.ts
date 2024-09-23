@@ -20,5 +20,5 @@ export default interface Product {
   weight: number;
 
   /** The sub-variants of each product */
-  options: ProductOption;
+  options: ProductOption[];
 }
