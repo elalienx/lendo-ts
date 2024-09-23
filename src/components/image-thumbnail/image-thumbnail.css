@@ -1,0 +1,8 @@
+.image-thumbnail {
+  --size: 100px;
+
+  width: var(--size);
+  height: var(--size);
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}

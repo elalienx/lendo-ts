@@ -1,0 +1,48 @@
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-small);
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: var(--space-medium);
+  font-size: 48px;
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 21px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+h3 {
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-bold);
+}
+
+p {
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+}
+
+a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-blue-dark);
+  text-decoration: underline;
+}
+
+small {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-gray);
+  text-transform: uppercase;
+}

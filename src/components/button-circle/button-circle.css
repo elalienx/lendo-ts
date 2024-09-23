@@ -1,0 +1,27 @@
+.button-circle {
+  --icon-size: 12px;
+
+  background-color: var(--color-blue);
+  color: white;
+  padding: var(--space-small);
+  border: transparent;
+  border-radius: 100px; /** to force a circle shape. */
+  line-height: 0;
+  cursor: pointer;
+
+  .icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+}
+
+.button-circle:hover {
+  background-color: var(--color-blue-dark);
+  text-decoration: none; /* to remove links having an underline when using the button class */
+}
+
+.button-circle:disabled {
+  background-color: var(--color-gray);
+  color: var(--color-page-background);
+  cursor: not-allowed;
+}

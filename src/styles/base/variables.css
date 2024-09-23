@@ -1,0 +1,35 @@
+:root {
+  /* # Swatches */
+  --color-black: #1f1f00;
+  --color-blue: #007aff;
+  --color-gray: #6e6e6e;
+  --color-green: #29c768;
+  --color-red: #e70d5a;
+  --color-yellow: #f39c12;
+  --color-orange: #ff7518;
+
+  /* Special colors */
+  --color-page-background: #f5f5f5; /** the whole app background color. */
+  --color-blue-dark: #0156b3; /** for button hover effect. */
+
+  /* # Fonts */
+  --font-family: "Circular Pro", Helvetica, Segoe UI, Arial, ui-sans-serif, sans-serif;
+  --font-size-normal: 15px;
+  --font-size-small: 12px;
+  --font-weight-bold: 700;
+  --font-weight-normal: 500;
+
+  /* # Spacing */
+  --space-big: 32px;
+  --space-medium: 16px;
+  --space-small: 8px;
+
+  /* # Other */
+  --border-radius: 8px;
+
+  /* # Media queries */
+  /* Mobile is the default */
+  --media-query-tablet: 750px;
+  --media-query-laptop: 1000px;
+  --media-query-desktop: 1500px;
+}

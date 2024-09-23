@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-page-background);
+  color: var(--color-black);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: auto; /* To make text look great on Apple devices */
+}
+
+image {
+  display: inline-block; /* to remove the weird space bottom that inline elements have */
+  max-width: 100%;
+  height: auto;
+}
+
+.page {
+  width: min(960px, 100% - 24px - 24px); /* 24px per side */
+  margin-inline: auto;
+  padding: 24px 0 48px;
+}

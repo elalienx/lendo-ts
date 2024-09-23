@@ -1,0 +1,16 @@
+.button-cart {
+  display: flex;
+  gap: var(--space-small);
+  align-items: center;
+  padding: var(--space-small) var(--space-medium);
+  background-color: var(--color-black);
+  color: white;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+.button-cart:hover {
+  background-color: var(--color-blue-dark);
+}

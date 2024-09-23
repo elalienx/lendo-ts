@@ -1,0 +1,62 @@
+/* Default shape */
+.radio-color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-small);
+
+  input {
+    --size: 12px;
+    appearance: none;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100px;
+    background-color: var(--page-color);
+  }
+
+  input:hover {
+    background-color: var(--color-gray);
+  }
+
+  input:checked {
+    background-color: var(--color-yellow);
+  }
+
+  .swatch {
+    --size: 44px;
+
+    background-color: transparent; /** transparent in case of an unknown color */
+    border: solid 8px var(--color-black);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100px;
+  }
+}
+
+/* Custom colors */
+.radio-color .swatch {
+  &.red {
+    background-color: var(--color-red);
+  }
+  &.green {
+    background-color: var(--color-green);
+  }
+  &.blue {
+    background-color: var(--color-blue);
+  }
+  &.yellow {
+    background-color: var(--color-yellow);
+  }
+  &.orange {
+    background-color: var(--color-orange);
+  }
+  &.gray {
+    background-color: var(--color-gray);
+  }
+  &.black {
+    background-color: black; /** true black to stand out of the border */
+  }
+  &.white {
+    background-color: white;
+  }
+}

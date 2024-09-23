@@ -1,0 +1,72 @@
+.item-product {
+  --background-color: white; /** to align the background and border to the same color, so on hover we don't get visual glitches when we add a border. */
+
+  display: flex;
+  gap: var(--space-small);
+  align-items: center;
+  padding: var(--space-small);
+  background-color: var(--background-color);
+  color: var(--color-black);
+  border-radius: var(--border-radius);
+  border: solid 2px var(--background-color);
+
+  /* Left */
+  .image-thumbnail {
+    --image-size: 48px;
+
+    width: var(--image-size);
+    height: var(--image-size);
+  }
+
+  /* Middle */
+  .text-group {
+    .name {
+      margin-bottom: 0;
+    }
+    .brand {
+      margin-right: var(--space-small);
+    }
+  }
+
+  /* Right */
+  .price-tag {
+    margin-left: auto; /** to automatically push it to the right, requires flexbox. */
+  }
+}
+
+.item-product.dissabled:hover {
+  cursor: not-allowed;
+  border-color: white;
+}
+
+.item-product:hover {
+  text-decoration: none;
+  color: var(--color-black);
+  border-color: var(--color-yellow);
+}
+
+@media (min-width: 750px) {
+  .item-product {
+    flex-direction: column;
+    align-items: start;
+    padding: var(--space-medium);
+
+    /* Top */
+    .image-thumbnail {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      height: var(--image-height);
+    }
+
+    /* Middle */
+    .text-group {
+      margin-bottom: 24px; /** A design choice to sepate text from price. */
+    }
+
+    /* Bottom */
+    .price-tag {
+      margin-left: initial; /** resets the aligment we did on mobile. */
+    }
+  }
+}

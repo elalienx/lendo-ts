@@ -1,0 +1,35 @@
+.item-cart {
+  --image-size: 32px;
+  --button-circle-size: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  width: 100%;
+  color: var(--color-black);
+
+  /* Left */
+  .image-thumbnail {
+    width: var(--image-size);
+    height: var(--image-size);
+  }
+
+  /* Middle */
+  .name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-small);
+    margin-bottom: 0;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-small);
+  }
+
+  /* Right */
+  .price-tag {
+    margin-left: auto; /** to automatically push it to the right, requires flexbox. */
+  }
+}

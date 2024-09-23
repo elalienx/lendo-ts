@@ -1,0 +1,28 @@
+.navigation-bar {
+  --logo-size: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-small) 24px;
+  background-color: white;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .logo {
+    height: var(--logo-size);
+    aspect-ratio: 48 / 15; /** to reserve space while downloading image */
+  }
+}
+
+/* Tables */
+@media (min-width: 750px) {
+  .navigation-bar {
+    --logo-size: 48px;
+
+    padding: 24px;
+  }
+}
