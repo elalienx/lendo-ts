@@ -2,8 +2,7 @@ name: Lendo Continuous Integration
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   frontend-test:
