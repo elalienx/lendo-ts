@@ -32,26 +32,38 @@ const product = {
     {
       color: "white",
       power: [6.5, 9.5],
-      quantity: 3,
+      quantity: 1,
     },
     {
       color: "red",
       power: [6.5, 9.5],
-      quantity: 7,
+      quantity: 5,
     },
   ],
 };
-const item = {
+const itemWithOneUnit = {
   id: 1, // matches product id
-  color: 1, // matches the first option: {color: "white", power: [6.5, 9.5], quantity: 3}
-  variant: 2, // matches power: 9.5
-  quantity: 2, // how many items of this product the user added to the cart
+  color: 0, // matches the first option: {color: "white", power: [6.5, 9.5], quantity: 1}
+  variant: 1, // matches power: 6.5
+  quantity: 1, // how many items of this product the user added to the cart
 };
+const itemWithManyUnits = {
+  id: 1, // matches product id
+  color: 1, // matches the second option: {color: "red", power: [6.5, 9.5], quantity: 10}
+  variant: 1, // matches power: 6.5
+  quantity: 10, // how many items of this product the user added to the cart
+};
+const dispatch = () => {};
 
 export default {
-  Default: (
+  ItemWithOneUnit: (
     <DecoratorPage>
-      <ItemCart product={product} item={item} />
+      <ItemCart product={product} item={itemWithOneUnit} index={0} dispatch={dispatch} />
+    </DecoratorPage>
+  ),
+  ItemWithManyUnits: (
+    <DecoratorPage>
+      <ItemCart product={product} item={itemWithManyUnits} index={1} dispatch={dispatch} />
     </DecoratorPage>
   ),
 };

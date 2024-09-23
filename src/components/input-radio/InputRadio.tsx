@@ -1,5 +1,4 @@
 // Project files
-import type RadioName from "types/RadioName";
 import Radio from "./Radio";
 import "./input-radio.css";
 
@@ -14,7 +13,7 @@ interface Props {
   state: [number, Function];
 
   /** The options of this radio group */
-  options: RadioName[];
+  options: string[] | number[];
 }
 
 export default function InputRadio({ id, label, state, options }: Props) {

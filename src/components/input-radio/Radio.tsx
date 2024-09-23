@@ -1,5 +1,4 @@
 // Project files
-import type RadioName from "types/RadioName";
 import "./radio.css";
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
   state: [number, Function];
 
   /** The text to diplay to the user. */
-  name: RadioName;
+  name: string | number;
 }
 
 export default function Radio({ id, index, state, name }: Props) {
