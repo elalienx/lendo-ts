@@ -5,10 +5,10 @@ import { render, screen } from "@testing-library/react";
 // Project files
 import Badge from "./Badge";
 
-test("Shows 99+ when passing numbers bigger than 100", () => {
+test("Shows 9+ when passing numbers bigger than 10", () => {
   // Arrange
-  const number = 1000;
-  const result = "99+";
+  const number = 100;
+  const result = "9+";
 
   render(<Badge number={number} />);
 
