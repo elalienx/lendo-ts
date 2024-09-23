@@ -1,25 +1,23 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import FontAwesomeIcon from "../font-awesome/FontAwesomeIcon";
+import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
+import IconPrefix from "types/IconPrefix";
 import "./button-circle.css";
 
-ButtonCircle.propTypes = {
+interface Props {
   /** The icon name from the FontAwesome library. */
-  icon: PropTypes.string.isRequired,
+  icon: string;
 
   /** The icon category of FontAwesome library. This can be the "fas" solid icons or the "fab" brand icons. */
-  icon_prefix: PropTypes.string,
+  icon_prefix?: IconPrefix;
 
   /** The click handler. */
-  onClick: PropTypes.func,
+  onClick?: () => void;
 
   /** Is the button actionable? */
-  disabled: PropTypes.bool,
-};
+  disabled?: boolean;
+}
 
-export default function ButtonCircle({ icon, icon_prefix = "fas", onClick, disabled }) {
+export default function ButtonCircle({ icon, icon_prefix = "fas", onClick, disabled }: Props) {
   return (
     <button className="button-circle" disabled={disabled} onClick={onClick}>
       <FontAwesomeIcon icon={[icon_prefix, icon]} />

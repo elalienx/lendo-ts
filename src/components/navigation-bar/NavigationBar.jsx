@@ -9,7 +9,7 @@ import "./navigation-bar.css";
 
 NavigationBar.propTypes = {
   /** The number of items the user has in the shopping cart. */
-  number: PropTypes.number,
+  number: number,
 };
 
 export default function NavigationBar({ number = 0 }) {

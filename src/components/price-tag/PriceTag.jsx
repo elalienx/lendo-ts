@@ -1,12 +1,9 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
 import "./price-tag.css";
 
 PriceTag.propTypes = {
   /** The product price. */
-  price: PropTypes.number.isRequired,
+  price: number,
 };
 
 /**

@@ -1,30 +1,33 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import RadioName from "../../propTypes/RadioName";
+import type RadioName from "types/RadioName";
 import "./radio.css";
 
-Radio.propTypes = {
+interface Props {
   /** The unique identifier shared by all radio buttons that belong to a single group. */
-  id: PropTypes.string.isRequired,
+  id: string;
 
   /** The position in the array of this option. */
-  index: PropTypes.number.isRequired,
+  index: number;
 
   /** The value the user has selected, we sent it to vertify if this is the active radio. */
-  state: PropTypes.array,
+  state: [number, Function];
 
   /** The text to diplay to the user. */
-  name: RadioName,
-};
+  name: RadioName;
+}
 
-export default function Radio({ id, index, state, name }) {
+export default function Radio({ id, index, state, name }: Props) {
   const [selectedIndex, setSelectedIndex] = state;
 
   return (
     <label className="radio">
-      <input type="radio" name={id} value={index} checked={index === selectedIndex} onChange={() => setSelectedIndex(index)} />
+      <input
+        type="radio"
+        name={id}
+        value={index}
+        checked={index === selectedIndex}
+        onChange={() => setSelectedIndex(index)}
+      />
       {name}
     </label>
   );

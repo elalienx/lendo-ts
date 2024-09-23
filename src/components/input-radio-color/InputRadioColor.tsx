@@ -1,28 +1,31 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
 import RadioColor from "./RadioColor";
 import "./input-radio-color.css";
 
-InputRadioColor.propTypes = {
+interface Props {
   /** The unique identifier gropping the radio options. */
-  id: PropTypes.string.isRequired,
+  id: string;
 
   /** The title of the radio group the user sees. */
-  label: PropTypes.string.isRequired,
+  label: string;
 
   /** The state controlling the input. */
-  state: PropTypes.array,
+  state: [number, Function];
 
   /** The options of this radio group */
-  options: PropTypes.arrayOf(PropTypes.string),
-};
+  options: string[];
+}
 
-export default function InputRadioColor({ id, label, state, options }) {
+export default function InputRadioColor({ id, label, state, options }: Props) {
   // Components
   const Options = options.map((item, index) => (
-    <RadioColor key={`${id}-radio-color-${index}-${item}`} id={id} index={index} state={state} name={item} />
+    <RadioColor
+      key={`${id}-radio-color-${index}-${item}`}
+      id={id}
+      index={index}
+      state={state}
+      name={item}
+    />
   ));
 
   return (

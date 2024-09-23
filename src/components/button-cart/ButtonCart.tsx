@@ -1,22 +1,19 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import FontAwesomeIcon from "../font-awesome/FontAwesomeIcon";
-import Badge from "../badge/Badge";
+import Badge from "components/badge/Badge";
+import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
 import "./button-cart.css";
 
-ButtonCart.propTypes = {
+interface Props {
   /** The number of items the user has in the shopping cart. */
-  number: PropTypes.number.isRequired,
-};
+  number: number;
+}
 
 /**
  * Note:
  * This is a <div> for easier testing and framework portability.
  * Navigation is handled by the parent component.
  */
-export default function ButtonCart({ number }) {
+export default function ButtonCart({ number }: Props) {
   return (
     <div className="button-cart">
       <FontAwesomeIcon icon={["fas", "bag-shopping"]} />

@@ -1,19 +1,16 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import Placeholder from "../../assets/images/placeholder.png";
+import Placeholder from "assets/images/placeholder.png";
 import "./image-thumbnail.css";
 
-ImageThumbnail.propTypes = {
+interface Props {
   /** The product image. */
-  image: PropTypes.string,
+  image: string;
 
   /** The visual description of the image for screen readers. */
-  alt: PropTypes.string,
-};
+  alt: string;
+}
 
-export default function ImageThumbnail({ image = "", alt = "" }) {
+export default function ImageThumbnail({ image = "", alt = "" }: Props) {
   // Properties
   const Source = image === "" ? Placeholder : image;
 

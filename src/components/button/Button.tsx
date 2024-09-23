@@ -1,28 +1,26 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import FontAwesomeIcon from "../font-awesome/FontAwesomeIcon";
+import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
+import IconPrefix from "types/IconPrefix";
 import "./button.css";
 
-Button.propTypes = {
+interface Props {
   /** Button contents. */
-  label: PropTypes.string.isRequired,
+  label: string;
 
   /** The click handler. */
-  onClick: PropTypes.func,
+  onClick?: () => void;
 
   /** Is the button actionable? */
-  disabled: PropTypes.bool,
+  disabled: boolean;
 
   /** The icon category of FontAwesome library. This can be the "fas" solid icons or the "fab" brand icons. */
-  icon_prefix: PropTypes.string,
+  icon_prefix: IconPrefix;
 
   /** The icon name from the FontAwesome library. */
-  icon: PropTypes.string,
-};
+  icon: string;
+}
 
-export default function Button({ label, onClick, disabled, icon_prefix = "fas", icon }) {
+export default function Button({ label, onClick, disabled, icon_prefix = "fas", icon }: Props) {
   return (
     <button className="button" disabled={disabled} onClick={onClick}>
       {icon && <FontAwesomeIcon icon={[icon_prefix, icon]} />}
