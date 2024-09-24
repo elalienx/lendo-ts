@@ -2,26 +2,24 @@
 import { expect, test } from "vitest";
 
 // Project files
+import type CartItem from "types/CartItem";
 import deleteItem from "./deleteItem";
 
 test("Remove and item from array", () => {
   // Arrange
-  const state = [
-    { name: "Eduardo", age: 37 },
-    { name: "Alexia", age: 42 },
-    { name: "Rocio", age: 65 },
+  const state: CartItem[] = [
+    { product_id: 10, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sega Statun
+    { product_id: 20, color_index: 0, variant: 0, selectedQuantity: 1 }, // Nintendo 64
+    { product_id: 30, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sony PlayStation
   ];
-  const action = {
-    type: "remove-item",
-    payload: 1, // remove Alexia
-  };
-  const result = [
-    { name: "Eduardo", age: 37 },
-    { name: "Rocio", age: 65 },
+  const payload = 1; // index 1 in the array is Nintendo 64
+  const result: CartItem[] = [
+    { product_id: 10, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sega Statun
+    { product_id: 30, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sony PlayStation
   ];
 
   // Act
-  const test = deleteItem(state, action);
+  const test = deleteItem(state, payload);
 
   // Assert
   expect(test).toEqual(result);
@@ -29,23 +27,20 @@ test("Remove and item from array", () => {
 
 test("Does not crash nor mutate state if index is not found", () => {
   // Arrange
-  const state = [
-    { name: "Eduardo", age: 37 },
-    { name: "Alexia", age: 42 },
-    { name: "Rocio", age: 65 },
+  const state: CartItem[] = [
+    { product_id: 10, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sega Statun
+    { product_id: 20, color_index: 0, variant: 0, selectedQuantity: 1 }, // Nintendo 64
+    { product_id: 30, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sony PlayStation
   ];
-  const action = {
-    type: "remove-item",
-    payload: 9, // index does not exist
-  };
-  const result = [
-    { name: "Eduardo", age: 37 },
-    { name: "Alexia", age: 42 },
-    { name: "Rocio", age: 65 },
+  const payload = 9; // index 9 in the array does not exist
+  const result: CartItem[] = [
+    { product_id: 10, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sega Statun
+    { product_id: 20, color_index: 0, variant: 0, selectedQuantity: 1 }, // Nintendo 64
+    { product_id: 30, color_index: 0, variant: 0, selectedQuantity: 1 }, // Sony PlayStation
   ];
 
   // Act
-  const test = deleteItem(state, action);
+  const test = deleteItem(state, payload);
 
   // Assert
   expect(test).toEqual(result);
