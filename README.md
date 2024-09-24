@@ -1,6 +1,8 @@
 # Lendo Shopping Cart
 
-Link to demo: [Demo website](https://lendo-shopping-cart.web.app)
+This is the TypeScript version of the Lendo Shopping Cart exercise.
+
+Link to demo: [Demo website](https://lendo-ts.web.app)
 
 ## Installation
 
