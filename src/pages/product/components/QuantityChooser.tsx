@@ -1,19 +1,16 @@
-// Node modules
-import PropTypes from "prop-types";
-
 // Project files
-import ButtonCircle from "../../../components/button-circle/ButtonCircle";
+import ButtonCircle from "components/button-circle/ButtonCircle";
 import "./quantity-chooser.css";
 
-QuantityChooser.propTyes = {
+interface Props {
   /** The state controlling the quantity. */
-  state: PropTypes.array.isRequired,
+  state: [number, Function];
 
   /** The maximum ammount of units of this product. Used to set a limit of how many you can choose. */
-  availableQuantity: PropTypes.number.isRequired,
-};
+  availableQuantity: number;
+}
 
-export default function QuantityChooser({ state, availableQuantity }) {
+export default function QuantityChooser({ state, availableQuantity }: Props) {
   const [quantity, setQuantity] = state;
 
   // Methods
@@ -29,7 +26,11 @@ export default function QuantityChooser({ state, availableQuantity }) {
     <p className="quantity-chooser">
       Quantity: {quantity}
       <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={quantity === 1} />
-      <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={quantity === availableQuantity} />
+      <ButtonCircle
+        icon="plus"
+        onClick={() => addQuantity()}
+        disabled={quantity === availableQuantity}
+      />
     </p>
   );
 }

@@ -6,6 +6,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import ItemCart from "./ItemCart";
 import Product from "types/Product";
 import CartItem from "types/CartItem";
+import { CartProvider } from "state/CartContext";
 
 // Properties
 const product: Product = {

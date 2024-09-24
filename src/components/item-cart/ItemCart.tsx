@@ -1,3 +1,5 @@
+// Node modules
+import { Dispatch } from "react";
 import toast from "react-hot-toast";
 
 // Project files
@@ -6,6 +8,7 @@ import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import PriceTag from "components/price-tag/PriceTag";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
+import type CartActions from "types/CartActions";
 import "./item-cart.css";
 
 /**
@@ -23,7 +26,7 @@ interface Props {
   cartItem: CartItem;
 
   /** The actions of the cart global state. */
-  dispatch: Function;
+  dispatch: Dispatch<CartActions>;
 }
 
 export default function ItemCart({ product, cartItem, index, dispatch }: Props) {
