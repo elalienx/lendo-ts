@@ -36,8 +36,8 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const productOption = options[color_index];
   const quantityAvailable = productOption.quantity;
   const subTotal = Number(price) * selectedQuantity;
-  const canRemoveItems = selectedQuantity > 1;
-  const canAddItems = selectedQuantity < quantityAvailable;
+  const buttonMinusIsEnabled = selectedQuantity === 1;
+  const buttonAddIsEnabled = selectedQuantity >= quantityAvailable;
 
   // Methods
   function onAddQuantity() {
@@ -65,8 +65,8 @@ export default function ItemCart({ product, cartItem, index }: Props) {
         <p className="name">{name}</p>
         <div className="buttons">
           <span>Quantity: {selectedQuantity}</span>
-          <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={canRemoveItems} />
-          <ButtonCircle icon="plus" onClick={onAddQuantity} disabled={canAddItems} />
+          <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={buttonMinusIsEnabled} />
+          <ButtonCircle icon="plus" onClick={onAddQuantity} disabled={buttonAddIsEnabled} />
           <ButtonCircle icon="trash-can" onClick={onDelete} />
         </div>
       </div>
