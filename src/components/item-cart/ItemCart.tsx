@@ -41,6 +41,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   // Methods
   function onAddQuantity() {
+    console.log("onAddQuantity()");
     dispatch({ type: "add-quantity", payload: { index, productOption } });
   }
 
@@ -57,6 +58,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   return (
     <article className="item-cart">
+      <h3>debug</h3>
       {/* Left */}
       <ImageThumbnail image={""} alt={""} />
 
