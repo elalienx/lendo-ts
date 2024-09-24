@@ -1,5 +1,4 @@
 // Node modules
-import { Dispatch } from "react";
 import toast from "react-hot-toast";
 
 // Project files
@@ -8,7 +7,7 @@ import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import PriceTag from "components/price-tag/PriceTag";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
-import type CartActions from "types/CartActions";
+import { useCart } from "state/CartContext";
 import "./item-cart.css";
 
 /**
@@ -24,14 +23,14 @@ interface Props {
 
   /** The cart item containing the product id, color, variant, and quantity selected. */
   cartItem: CartItem;
-
-  /** The actions of the cart global state. */
-  dispatch: Dispatch<CartActions>;
 }
 
-export default function ItemCart({ product, cartItem, index, dispatch }: Props) {
+export default function ItemCart({ product, cartItem, index }: Props) {
   const { name, options, price } = product;
   const { color_index, selectedQuantity } = cartItem;
+
+  // Global state
+  const { dispatch } = useCart();
 
   // Properties
   const productOption = options[color_index];
@@ -42,6 +41,7 @@ export default function ItemCart({ product, cartItem, index, dispatch }: Props) 
 
   // Methods
   function onAdd() {
+    console.log("on add");
     dispatch({ type: "add-quantity", payload: { index, option: productOption } });
   }
 
@@ -67,7 +67,7 @@ export default function ItemCart({ product, cartItem, index, dispatch }: Props) 
         <div className="buttons">
           <span>Quantity: {selectedQuantity}</span>
           <ButtonCircle icon="minus" onClick={() => onRemove()} disabled={canRemoveItems} />
-          <ButtonCircle icon="plus" onClick={() => onAdd()} disabled={canAddItems} />
+          <ButtonCircle icon="plus" onClick={onAdd} disabled={canAddItems} />
           <ButtonCircle icon="trash-can" onClick={() => onDelete()} />
         </div>
       </div>

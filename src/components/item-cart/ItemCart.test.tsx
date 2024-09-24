@@ -38,16 +38,15 @@ test("Can increase quantity by 1", async () => {
     variant: 0, // matches the first item in the power array.
     selectedQuantity: 2, // how many units the user selected to purchase
   };
-  const dispatch = () => {};
 
   render(
     <CartProvider>
-      <ItemCart product={product} cartItem={cartItem} index={0} dispatch={dispatch} />
+      <ItemCart product={product} cartItem={cartItem} index={0} />
     </CartProvider>
   );
 
   // Act
-  const test = screen.getByLabelText(/button-plus/i);
+  const test = screen.getByLabelText("button-circle-plus");
 
   fireEvent.click(test);
 

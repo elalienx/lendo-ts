@@ -15,10 +15,12 @@ interface Props {
 
 export default function Checkout({ data }: Props) {
   // Global state
-  const { cart, dispatch } = useCart();
+  const { cart } = useCart();
 
   // Properties
-  const matchingProducts = cart.map((item) => data.find((product) => product.id === item.id));
+  const matchingProducts = cart.map((item) =>
+    data.find((product) => product.id === item.product_id)
+  );
   const grandTotal = calculateGrandTotal(matchingProducts, cart);
 
   // Safeguards
@@ -26,13 +28,7 @@ export default function Checkout({ data }: Props) {
 
   // Components
   const Items = cart.map((item, index) => (
-    <ItemCart
-      key={index}
-      product={matchingProducts[index]}
-      item={item}
-      index={index}
-      dispatch={dispatch}
-    />
+    <ItemCart key={index} product={matchingProducts[index]} cartItem={item} index={index} />
   ));
 
   return (
