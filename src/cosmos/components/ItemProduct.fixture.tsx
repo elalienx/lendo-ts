@@ -2,24 +2,27 @@
 import { BrowserRouter } from "react-router-dom";
 
 // Project files
+import type Product from "types/Product";
 import ItemProduct from "components/item-product/ItemProduct";
 
 // Properties
-const goodProduct = {
+const goodProduct: Product = {
   id: 1,
   name: "Sony Playstation 4",
   brand: "Sony",
   available: true,
   weight: 0.5,
   price: "5000",
+  options: [],
 };
-const badProduct = {
+const badProduct: Product = {
   id: 1,
   name: "N-Gage",
   brand: "Nokia",
   available: false,
   weight: 0.5,
   price: "1250",
+  options: [],
 };
 
 /**

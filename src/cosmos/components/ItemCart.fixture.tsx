@@ -2,6 +2,8 @@
 import { ReactNode } from "react";
 
 // Project file
+import type CartItem from "types/CartItem";
+import type Product from "types/Product";
 import ItemCart from "components/item-cart/ItemCart";
 
 // Decorators
@@ -21,7 +23,7 @@ function DecoratorPage({ children }: Props) {
 }
 
 // Properties
-const product = {
+const product: Product = {
   id: 1,
   name: "Philips hue bulb",
   brand: "Philips",
@@ -41,29 +43,28 @@ const product = {
     },
   ],
 };
-const itemWithOneUnit = {
-  id: 1, // matches product id
-  color: 0, // matches the first option: {color: "white", power: [6.5, 9.5], quantity: 1}
-  variant: 1, // matches power: 6.5
-  quantity: 1, // how many items of this product the user added to the cart
+const itemWithOneUnit: CartItem = {
+  product_id: 1, // matches product id
+  colorIndex: 0, // matches the first option: {color: "white", power: [6.5, 9.5], quantity: 1}
+  variantIndex: 1, // matches power: 6.5
+  selectedQuantity: 1, // how many items of this product the user added to the cart
 };
-const itemWithManyUnits = {
-  id: 1, // matches product id
-  color: 1, // matches the second option: {color: "red", power: [6.5, 9.5], quantity: 10}
-  variant: 1, // matches power: 6.5
-  quantity: 10, // how many items of this product the user added to the cart
+const itemWithManyUnits: CartItem = {
+  product_id: 1, // matches product id
+  colorIndex: 1, // matches the second option: {color: "red", power: [6.5, 9.5], quantity: 10}
+  variantIndex: 1, // matches power: 6.5
+  selectedQuantity: 10, // how many items of this product the user added to the cart
 };
-const dispatch = () => {};
 
 export default {
   ItemWithOneUnit: (
     <DecoratorPage>
-      <ItemCart product={product} item={itemWithOneUnit} index={0} dispatch={dispatch} />
+      <ItemCart product={product} cartItem={itemWithOneUnit} index={0} />
     </DecoratorPage>
   ),
   ItemWithManyUnits: (
     <DecoratorPage>
-      <ItemCart product={product} item={itemWithManyUnits} index={1} dispatch={dispatch} />
+      <ItemCart product={product} cartItem={itemWithManyUnits} index={1} />
     </DecoratorPage>
   ),
 };
