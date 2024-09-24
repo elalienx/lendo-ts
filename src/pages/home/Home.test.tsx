@@ -2,6 +2,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Project files
 import Data from "data/inventory.json";

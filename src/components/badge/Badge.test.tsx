@@ -1,6 +1,7 @@
 // Node modules
 import { expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Project files
 import Badge from "./Badge";
