@@ -18,8 +18,16 @@ interface Props {
 }
 
 export default function ButtonCircle({ icon, icon_prefix = "fas", onClick, disabled }: Props) {
+  // Properties
+  const accessibleName = `button-${icon}`; // so screen readers can read the button
+
   return (
-    <button className="button-circle" disabled={disabled} onClick={onClick}>
+    <button
+      aria-label={accessibleName}
+      className="button-circle"
+      disabled={disabled}
+      onClick={onClick}
+    >
       <FontAwesomeIcon icon={[icon_prefix, icon]} />
     </button>
   );

@@ -3,8 +3,8 @@ import InputRadioColor from "components/input-radio-color/InputRadioColor";
 
 // Properties
 const colorOptions = ["red", "green", "blue", "yellow", "black", "white", "gray"];
-const fakeDefaultState = [-1, () => {}]; // -1 means no selectes
-const fakeActiveState = [0, () => {}]; // 0 = activates the first option
+const fakeDefaultState: [number, Function] = [-1, () => {}]; // -1 means no selectes
+const fakeActiveState: [number, Function] = [0, () => {}]; // 0 = activates the first option
 
 export default {
   Default: (

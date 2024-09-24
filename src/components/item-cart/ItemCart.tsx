@@ -3,51 +3,49 @@ import toast from "react-hot-toast";
 // Project files
 import ButtonCircle from "components/button-circle/ButtonCircle";
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
-import NotAvailable from "components/not-available/NotAvailable";
 import PriceTag from "components/price-tag/PriceTag";
+import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import "./item-cart.css";
 
 interface Props {
+  /**
+   * Refactor:
+   * Once we improve the add-item where we do add the item to the same product rather to as another one, we don't need the index
+   */
+  /** The position of a product inside the cart array, used for the dispatcher. */
+  index: number;
+
   /** A specific product matching the cart item */
   product: Product;
 
   /** The cart item containing the product id, color, variant, and quantity selected. */
-  item: {
-    /** The id of the product in the inventory.json used to brind the product description and price. */
-    id: number;
-
-    /** The color of a product as as the index to know what variant to use. */
-    color: number;
-
-    /** Specific variant of a prodcut like 250 or 500 GB of storage. */
-    variant: number;
-
-    /** The amount of units the user decided to purchase. */
-    quantity: number;
-  };
-
-  /** The position inside the cart array, used for the dispatcher. */
-  index: number;
+  cartItem: CartItem;
 
   /** The actions of the cart global state. */
   dispatch: Function;
 }
 
-export default function ItemCart({ product, item, index, dispatch }: Props) {
-  const { color, quantity } = item;
-
-  // Safeguards
-  if (!product) return <NotAvailable />;
+export default function ItemCart({ product, cartItem, index, dispatch }: Props) {
+  const { name, options, price } = product;
+  const { color_index, selectedQuantity } = cartItem;
 
   // Properties
-  const option = product.options[color]; // color acts as index
-  const quantityAvailable = option.quantity;
-  const subTotal = Number(product.price) * quantity;
-  const buttonMinusIsEnabled = quantity === 1;
-  const buttonAddIsEnabled = quantity >= quantityAvailable;
+  const productOption = options[color_index];
+  const quantityAvailable = productOption.quantity;
+  const subTotal = Number(price) * selectedQuantity;
+  const canRemoveItems = selectedQuantity > 1;
+  const canAddItems = selectedQuantity < quantityAvailable;
 
   // Methods
+  function onAdd() {
+    dispatch({ type: "add-quantity", payload: { index, option: productOption } });
+  }
+
+  function onRemove() {
+    dispatch({ type: "remove-quantity", payload: index });
+  }
+
   function onDelete() {
     const toastStyle = { backgroundColor: "#e70d5a", color: "white" };
 
@@ -62,19 +60,11 @@ export default function ItemCart({ product, item, index, dispatch }: Props) {
 
       {/* Middle */}
       <div className="text-group">
-        <p className="name">{product.name}</p>
+        <p className="name">{name}</p>
         <div className="buttons">
-          Quantity: {quantity}
-          <ButtonCircle
-            icon="minus"
-            onClick={() => dispatch({ type: "remove-quantity", payload: index })}
-            disabled={buttonMinusIsEnabled}
-          />
-          <ButtonCircle
-            icon="plus"
-            onClick={() => dispatch({ type: "add-quantity", payload: { index, option } })}
-            disabled={buttonAddIsEnabled}
-          />
+          <span>Quantity: {selectedQuantity}</span>
+          <ButtonCircle icon="minus" onClick={() => onRemove()} disabled={canRemoveItems} />
+          <ButtonCircle icon="plus" onClick={() => onAdd()} disabled={canAddItems} />
           <ButtonCircle icon="trash-can" onClick={() => onDelete()} />
         </div>
       </div>

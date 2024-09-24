@@ -25,7 +25,7 @@ export default function FontAwesomeIcon({ icon, spin }: Props) {
   return (
     <span className="fontawesome">
       <svg
-        className={`icon ${spin && "spin"}`}
+        className={`icon ${spin ? "spin" : ""}`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox={`0 0 ${shape.width} 512`}
       >
