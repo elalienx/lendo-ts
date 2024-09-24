@@ -8,11 +8,11 @@ import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import "./item-cart.css";
 
+/**
+ * Refactor:
+ * Once we improve the add-item where we do add the item to the same product rather to as another one, we don't need the index
+ */
 interface Props {
-  /**
-   * Refactor:
-   * Once we improve the add-item where we do add the item to the same product rather to as another one, we don't need the index
-   */
   /** The position of a product inside the cart array, used for the dispatcher. */
   index: number;
 
