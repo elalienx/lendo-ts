@@ -3,10 +3,10 @@ export default interface CartItem {
   product_id: number;
 
   /** The color of a product as as the index to know what variant to use. */
-  color_index: number;
+  colorIndex: number;
 
   /** Specific variant of a prodcut like 250 or 500 GB of storage. */
-  variant: number;
+  variantIndex: number;
 
   /** The amount of units the user decided to purchase. */
   selectedQuantity: number;

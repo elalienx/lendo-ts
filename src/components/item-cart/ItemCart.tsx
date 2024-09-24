@@ -27,7 +27,7 @@ interface Props {
 
 export default function ItemCart({ product, cartItem, index }: Props) {
   const { name, options, price } = product;
-  const { color_index, selectedQuantity } = cartItem;
+  const { colorIndex: color_index, selectedQuantity } = cartItem;
 
   // Global state
   const { dispatch } = useCart();

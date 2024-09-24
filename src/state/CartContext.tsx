@@ -17,9 +17,9 @@ interface Props {
 
 // Properties
 const debugState: CartItem[] = [
-  { product_id: 2, color_index: 0, variant: 1, selectedQuantity: 2 }, // Trådfria Lampor, "white", power: 9.5, price 300x2 so 600 in total
-  { product_id: 4, color_index: 0, variant: 0, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
-  { product_id: 6, color_index: 1, variant: 1, selectedQuantity: 3 }, //Bluetooth speaker, "white", price 950x3 2850 in total
+  { product_id: 2, colorIndex: 0, variantIndex: 1, selectedQuantity: 2 }, // Trådfria Lampor, "white", power: 9.5, price 300x2 so 600 in total
+  { product_id: 4, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
+  { product_id: 6, colorIndex: 1, variantIndex: 1, selectedQuantity: 3 }, //Bluetooth speaker, "white", price 950x3 2850 in total
 ];
 const initialValues: ContextValue = {
   cart: [],

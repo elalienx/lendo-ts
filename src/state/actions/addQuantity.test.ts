@@ -17,7 +17,7 @@ interface Payload {
 test("Updates an item in the state", () => {
   // Arrange
   const state: CartItem[] = [
-    { product_id: 4, color_index: 0, variant: 1, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
+    { product_id: 4, colorIndex: 0, variantIndex: 1, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
   ];
   const payload: Payload = {
     index: 0,
@@ -28,7 +28,7 @@ test("Updates an item in the state", () => {
     },
   };
   const result: CartItem[] = [
-    { product_id: 4, color_index: 0, variant: 1, selectedQuantity: 2 }, // Now have 2 Nintendo Switch in total
+    { product_id: 4, colorIndex: 0, variantIndex: 1, selectedQuantity: 2 }, // Now have 2 Nintendo Switch in total
   ];
 
   // Act
@@ -41,7 +41,7 @@ test("Updates an item in the state", () => {
 test("Do not update state if there is not quantity available", () => {
   // Arrange
   const state: CartItem[] = [
-    { product_id: 4, color_index: 0, variant: 1, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
+    { product_id: 4, colorIndex: 0, variantIndex: 1, selectedQuantity: 1 }, // Nintendo switch, "red", storage: "500", price 4500
   ];
   const payload: Payload = {
     index: 0,
@@ -52,7 +52,7 @@ test("Do not update state if there is not quantity available", () => {
     },
   };
   const result: CartItem[] = [
-    { product_id: 4, color_index: 0, variant: 1, selectedQuantity: 1 }, // keep the same
+    { product_id: 4, colorIndex: 0, variantIndex: 1, selectedQuantity: 1 }, // keep the same
   ];
 
   // Act
