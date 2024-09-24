@@ -53,3 +53,8 @@ test("Can increase quantity by 1", async () => {
   // Assert
   expect(screen.getByText(/quantity: 3/i)).toBeInTheDocument();
 });
+
+// can increase the quantiy until reach the max
+// can decrease item by 1
+// can decrease the quantity until we reach the min
+// can delete item
