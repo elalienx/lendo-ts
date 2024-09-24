@@ -3,7 +3,7 @@ import Radio from "components/input-radio/Radio";
 
 // Properties
 const id = "color";
-const fakeState = [1, () => {}];
+const fakeState: [number, Function] = [1, (number: number) => {}];
 
 export default {
   Default: <Radio id={id} index={0} state={fakeState} name="Red" />,
