@@ -1,16 +1,16 @@
 # Lendo Shopping Cart
 
-This is the TypeScript version of the Lendo Shopping Cart exercise.
+This is the TypeScript version of the Lendo Shopping Cart exercise. [View demo](https://lendo-ts.web.app)
 
-Link to demo: [Demo website](https://lendo-ts.web.app)
+For the full explanation, see the original [project](https://github.com/elalienx/lendo-shopping-cart). This repository covers only the new additions.
 
-To see the full explanation, check the original [project](https://github.com/elalienx/lendo-shopping-cart) as this new repository will only explain what was build on top.
+⚠️ **Note:** The Product page is **intentionally** missing as it will be rebuilt to improve the add-to-cart feature and refactor the code.
 
 ## Planed improvements
 
 1. Migrated to TypeScript. ✅
 1. Add an enhanced add to cart feature.
-1. Refactor Product page to avoid `useEffect()`
+1. Create a new, enhanced Product page to avoid `useEffect()`
 1. Match the original Sketch design. (see original project for more info)
 
 ## Bonus features
