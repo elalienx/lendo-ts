@@ -40,12 +40,11 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const canAddItems = selectedQuantity < quantityAvailable;
 
   // Methods
-  function onAdd() {
-    console.log("on add");
-    dispatch({ type: "add-quantity", payload: { index, option: productOption } });
+  function onAddQuantity() {
+    dispatch({ type: "add-quantity", payload: { index, productOption } });
   }
 
-  function onRemove() {
+  function onRemoveQuantity() {
     dispatch({ type: "remove-quantity", payload: index });
   }
 
@@ -66,9 +65,9 @@ export default function ItemCart({ product, cartItem, index }: Props) {
         <p className="name">{name}</p>
         <div className="buttons">
           <span>Quantity: {selectedQuantity}</span>
-          <ButtonCircle icon="minus" onClick={() => onRemove()} disabled={canRemoveItems} />
-          <ButtonCircle icon="plus" onClick={onAdd} disabled={canAddItems} />
-          <ButtonCircle icon="trash-can" onClick={() => onDelete()} />
+          <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={canRemoveItems} />
+          <ButtonCircle icon="plus" onClick={onAddQuantity} disabled={canAddItems} />
+          <ButtonCircle icon="trash-can" onClick={onDelete} />
         </div>
       </div>
 

@@ -18,7 +18,7 @@ interface AddQuantity {
   type: "add-quantity";
   payload: {
     index: number; // the index of the item to remove from cart
-    option: ProductOption; // to know how many units we have already to not exceed the limit
+    productOption: ProductOption; // to know how many units we have already to not exceed the limit
   };
 }
 
