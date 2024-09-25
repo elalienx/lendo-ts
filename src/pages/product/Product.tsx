@@ -13,6 +13,7 @@ import InputRadioColor from "components/input-radio-color/InputRadioColor";
 import { useState } from "react";
 import extractVariant from "scripts/extractVariant";
 import InputRadio from "components/input-radio/InputRadio";
+import QuantityChooser from "./components/QuantityChooser";
 
 interface Props {
   data: Product[];
@@ -25,6 +26,7 @@ export default function Product({ data }: Props) {
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
   const [variantIndex, setVariantIndex] = useState(-1); // unset by default
+  const [quantity, setQuantity] = useState(1);
 
   const product: Product | undefined = data.find((item) => item.id === Number(id));
 
@@ -36,12 +38,30 @@ export default function Product({ data }: Props) {
   const colors = product.options.flatMap((item) => item.color);
 
   // Derived state
+  // -- 1. variant, 2. quantity, 3. add to cart
   const productOption = product.options[colorIndex];
+  const availableQuantity = productOption.quantity;
+
+  // -- variant
   const variants = extractVariant(productOption, ["color", "quantity"]);
+
+  // -- subtitle
   const extraDetails = `By ${product.brand} | Weight ${product.weight} kg`;
-  const total = Number(product.price);
-  const cssUnitsLeft = productOption.quantity === 0 ? "no-units-left" : "";
-  const buttonIsEnabled = false;
+
+  // -- quantity
+  const cssUnitsLeft = availableQuantity === 0 ? "no-units-left" : "";
+
+  // -- price tag
+  const total = Number(product.price) * quantity;
+
+  // -- add to cart
+  const buttonIsEnabled = variantIndex > -1 && availableQuantity > 0;
+
+  // Methods
+  function onChangeColor(newColorIndex: number) {
+    setColorIndex(newColorIndex);
+    setVariantIndex(-1); // resets it to force user to choose a variant
+  }
 
   return (
     <div id="product" className="page">
@@ -52,7 +72,7 @@ export default function Product({ data }: Props) {
         <InputRadioColor
           id={"color"}
           label={"Choose a color:"}
-          state={[colorIndex, setColorIndex]}
+          state={[colorIndex, onChangeColor]}
           options={colors}
         />
         <InputRadio
@@ -61,7 +81,10 @@ export default function Product({ data }: Props) {
           state={[variantIndex, setVariantIndex]}
           options={variants}
         />
-        <small className={cssUnitsLeft}>{productOption.quantity} units left</small>{" "}
+        {availableQuantity > 0 && (
+          <QuantityChooser state={[quantity, setQuantity]} availableQuantity={availableQuantity} />
+        )}
+        <small className={cssUnitsLeft}>{availableQuantity} units left</small>{" "}
         <PriceTag price={total} />
         <Button label={"Add to cart"} icon={"bag-shopping"} disabled={!buttonIsEnabled} />
       </div>
