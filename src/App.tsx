@@ -13,6 +13,7 @@ import { useCart } from "state/CartContext";
 const Checkout = lazy(() => import("pages/checkout/Checkout"));
 const Home = lazy(() => import("pages/home/Home"));
 const Page404 = lazy(() => import("pages/page-404/Page404"));
+const Product = lazy(() => import("pages/product/Product"));
 
 export default function App() {
   const { items } = Data;
@@ -24,6 +25,7 @@ export default function App() {
   const checkout = <Checkout data={items} />;
   const home = <Home data={items} />;
   const pageNotFound = <Page404 />;
+  const product = <Product data={items} />;
 
   // Derived state
   const itemsOnCart = cart.length;
@@ -35,7 +37,7 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={home} />
-          {/* <Route path="/product/:id" element={product} /> */}
+          <Route path="/product/:id" element={product} />
           <Route path="/checkout" element={checkout} />
           <Route path="*" element={pageNotFound} />
         </Routes>

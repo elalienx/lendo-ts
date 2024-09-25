@@ -30,7 +30,7 @@ const Context = createContext(initialValues);
 // For the parent
 export function CartProvider({ children }: Props) {
   // Local state
-  const [cart, dispatch] = useReducer(cartReducer, debugState);
+  const [cart, dispatch] = useReducer(cartReducer, []);
 
   return <Context.Provider value={{ cart, dispatch }}>{children}</Context.Provider>;
 }
