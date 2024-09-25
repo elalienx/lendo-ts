@@ -1,19 +1,22 @@
 // Node modules
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 // Project files
+import Button from "components/button/Button";
 import EmptyState from "components/empty-state/EmptyState";
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
+import InputRadio from "components/input-radio/InputRadio";
+import InputRadioColor from "components/input-radio-color/InputRadioColor";
+import PriceTag from "components/price-tag/PriceTag";
+import extractVariant from "scripts/extractVariant";
+import { useCart } from "state/CartContext";
+import type CartItem from "types/CartItem";
 import type Product from "types/Product";
+import QuantityChooser from "./components/QuantityChooser";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
-import PriceTag from "components/price-tag/PriceTag";
-import Button from "components/button/Button";
-import InputRadioColor from "components/input-radio-color/InputRadioColor";
-import { useState } from "react";
-import extractVariant from "scripts/extractVariant";
-import InputRadio from "components/input-radio/InputRadio";
-import QuantityChooser from "./components/QuantityChooser";
 
 interface Props {
   data: Product[];
@@ -21,8 +24,9 @@ interface Props {
 
 export default function Product({ data }: Props) {
   // Global state
+  const navigate = useNavigate();
   const { id } = useParams();
-
+  const { dispatch } = useCart();
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
   const [variantIndex, setVariantIndex] = useState(-1); // unset by default
@@ -40,6 +44,8 @@ export default function Product({ data }: Props) {
   // Derived state
   // -- 1. variant, 2. quantity, 3. add to cart
   const productOption = product.options[colorIndex];
+
+  // -- 1. quantity, 2. add to cart, 3. quantity choose
   const availableQuantity = productOption.quantity;
 
   // -- variant
@@ -48,7 +54,7 @@ export default function Product({ data }: Props) {
   // -- subtitle
   const extraDetails = `By ${product.brand} | Weight ${product.weight} kg`;
 
-  // -- quantity
+  // -- units left
   const cssUnitsLeft = availableQuantity === 0 ? "no-units-left" : "";
 
   // -- price tag
@@ -61,6 +67,20 @@ export default function Product({ data }: Props) {
   function onChangeColor(newColorIndex: number) {
     setColorIndex(newColorIndex);
     setVariantIndex(-1); // resets it to force user to choose a variant
+  }
+
+  function addToCart() {
+    const newItem: CartItem = {
+      product_id: Number(id),
+      colorIndex: colorIndex,
+      variantIndex: variantIndex,
+      selectedQuantity: quantity,
+    };
+    const toastStyle = { backgroundColor: "#29c768", color: "white" };
+
+    dispatch({ type: "add-item", payload: newItem });
+    toast("Product added to cart", { position: "bottom-right", style: toastStyle });
+    navigate("/");
   }
 
   return (
@@ -86,7 +106,12 @@ export default function Product({ data }: Props) {
         )}
         <small className={cssUnitsLeft}>{availableQuantity} units left</small>{" "}
         <PriceTag price={total} />
-        <Button label={"Add to cart"} icon={"bag-shopping"} disabled={!buttonIsEnabled} />
+        <Button
+          label={"Add to cart"}
+          icon={"bag-shopping"}
+          onClick={addToCart}
+          disabled={!buttonIsEnabled}
+        />
       </div>
     </div>
   );
