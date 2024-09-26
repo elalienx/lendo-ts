@@ -16,22 +16,22 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ## Planed improvements
 
-1. Migrated to TypeScript. ✅ DONE
-1. Create a new, enhanced Product page to avoid `useEffect()` ✅ DONE
 1. Add an enhanced add to cart feature. ⌛️ IN PROGRESS
 1. Match the original Sketch design. (see original project for more info)
+1. Migrated to TypeScript. ✅ DONE
+1. Create a new, enhanced Product page to avoid `useEffect()` ✅ DONE
 
 ## Bonus features
 
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
-1. Create custom toast notification to reduce dependencies.
 1. Add Biome linter.
+1. Create custom toast notification to reduce dependencies.
 
 ## Pending
 
-1. Add Checkout fixture page. ✅ DONE
-1. Improve `<QuantityChooser>` by adding a input number.
-1. Improve `<InputRadio>` for variants by using proposed design in Sketch. ✅ DONE
+1. Improve `<QuantityChooser>` by adding an input number.
 1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
 1. Improve `<CartItem>` userfulness by mentioning the selected color and variant.
 1. Add state to input radio fixture.
+1. Improve `<InputRadio>` for variants by using proposed design in Sketch. ✅ DONE
+1. Add Checkout fixture page. ✅ DONE
