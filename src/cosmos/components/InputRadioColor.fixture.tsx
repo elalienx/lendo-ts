@@ -7,20 +7,6 @@ const fakeDefaultState: [number, Function] = [-1, () => {}]; // -1 means no sele
 const fakeActiveState: [number, Function] = [0, () => {}]; // 0 = activates the first option
 
 export default {
-  Default: (
-    <InputRadioColor
-      id="color"
-      label="Choose color:"
-      state={fakeDefaultState}
-      options={colorOptions}
-    />
-  ),
-  Active: (
-    <InputRadioColor
-      id="color"
-      label="Choose color"
-      state={fakeActiveState}
-      options={colorOptions}
-    />
-  ),
+  Default: <InputRadioColor id="color" state={fakeDefaultState} options={colorOptions} />,
+  Active: <InputRadioColor id="color" state={fakeActiveState} options={colorOptions} />,
 };
