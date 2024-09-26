@@ -32,7 +32,7 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
         {quantity}
         <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={quantity === unitsLeft} />
       </div>
-      <small>{unitsLeft} units left</small>
+      <small>Units left ×{unitsLeft}</small>
     </section>
   );
 }
