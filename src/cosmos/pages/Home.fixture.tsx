@@ -2,12 +2,13 @@
 import { BrowserRouter } from "react-router-dom";
 
 // Project files
-import Home from "../../pages/home/Home";
-import Data from "../../data/inventory.json";
+import Home from "pages/home/Home";
+import Data from "data/inventory.json";
+import Product from "types/Product";
 
 // Properties
 const { items } = Data;
-const noItems = [];
+const noItems: Product[] = [];
 
 /**
  * This page is wrapped in BrowserRouter to support routing

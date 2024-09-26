@@ -1,10 +1,11 @@
 // Node modules
+import { ReactNode } from "react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 
 // Project files
-import Product from "../../pages/product/Product";
-import Data from "../../data/inventory.json";
-import { CartProvider } from "../../state/CartContext";
+import Product from "pages/product/Product";
+import Data from "data/inventory.json";
+import { CartProvider } from "state/CartContext";
 
 // Properties
 const { items } = Data;
@@ -13,7 +14,12 @@ const invalidId = 42; // does not exist on the inventory list
 const notAvailable = 5; // this product exist but is not available
 
 // Decorators
-function DecoratorRouter({ element, id }) {
+interface Props {
+  element: ReactNode;
+  id: number;
+}
+
+function DecoratorRouter({ element, id }: Props) {
   return (
     <MemoryRouter initialEntries={[`/path/${id}`]}>
       <CartProvider>
