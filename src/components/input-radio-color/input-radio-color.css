@@ -1,6 +1,4 @@
 .input-radio-color {
-  .options {
-    display: flex;
-    gap: var(--space-small);
-  }
+  display: flex;
+  gap: var(--space-small);
 }

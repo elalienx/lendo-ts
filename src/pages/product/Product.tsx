@@ -27,10 +27,11 @@ export default function Product({ data }: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const { dispatch } = useCart();
+
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
   const [variantIndex, setVariantIndex] = useState(-1); // unset by default
-  const [quantity, setQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const product: Product | undefined = data.find((item) => item.id === Number(id));
 
@@ -40,42 +41,23 @@ export default function Product({ data }: Props) {
 
   // Properties
   const colors = product.options.flatMap((item) => item.color);
-
-  // Derived state
-  // -- 1. variant, 2. quantity, 3. add to cart
-  const productOption = product.options[colorIndex];
-
-  // -- 1. quantity, 2. add to cart, 3. quantity choose
-  const availableQuantity = productOption.quantity;
-
-  // -- variant
-  const variants = extractVariant(productOption, ["color", "quantity"]);
-
-  // -- subtitle
+  const selectedOption = product.options[colorIndex];
+  const unitsLeft = selectedOption.quantity;
+  const variants = extractVariant(selectedOption, ["color", "quantity"]);
   const extraDetails = `By ${product.brand} | Weight ${product.weight} kg`;
-
-  // -- units left
-  const cssUnitsLeft = availableQuantity === 0 ? "no-units-left" : "";
-
-  // -- price tag
-  const total = Number(product.price) * quantity;
-
-  // -- add to cart
-  const buttonIsEnabled = variantIndex > -1 && availableQuantity > 0;
+  const total = Number(product.price) * selectedQuantity;
+  const buttonIsEnabled = variantIndex > -1 && unitsLeft > 0;
 
   // Methods
-  function onChangeColor(newColorIndex: number) {
+  function onChangeOption(newColorIndex: number) {
     setColorIndex(newColorIndex);
-    setVariantIndex(-1); // resets it to force user to choose a variant
+    setVariantIndex(-1);
+    setSelectedQuantity(1);
   }
 
   function addToCart() {
-    const newItem: CartItem = {
-      product_id: Number(id),
-      colorIndex: colorIndex,
-      variantIndex: variantIndex,
-      selectedQuantity: quantity,
-    };
+    const product_id = Number(id);
+    const newItem: CartItem = { product_id, colorIndex, variantIndex, selectedQuantity };
     const toastStyle = { backgroundColor: "#29c768", color: "white" };
 
     dispatch({ type: "add-item", payload: newItem });
@@ -89,29 +71,25 @@ export default function Product({ data }: Props) {
       <div className="content-group">
         <h1>{product.name}</h1>
         <small>{extraDetails}</small>
-        <InputRadioColor
-          id={"color"}
-          label={"Choose a color:"}
-          state={[colorIndex, onChangeColor]}
-          options={colors}
-        />
-        <InputRadio
-          id={"variant"}
-          label={"Choose a variant:"}
-          state={[variantIndex, setVariantIndex]}
-          options={variants}
-        />
-        {availableQuantity > 0 && (
-          <QuantityChooser state={[quantity, setQuantity]} availableQuantity={availableQuantity} />
-        )}
-        <small className={cssUnitsLeft}>{availableQuantity} units left</small>{" "}
+        <section className="color">
+          <h3>Color:</h3>
+          <InputRadioColor id={"color"} state={[colorIndex, onChangeOption]} options={colors} />
+        </section>
+        <section className="variant">
+          <h3>Variant:</h3>
+          <InputRadio id={"variant"} state={[variantIndex, setVariantIndex]} options={variants} />
+        </section>
+        <section className="quantity-chooser">
+          <h3>Quantity:</h3>
+          <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
+        </section>
         <PriceTag price={total} />
         <Button
-          label={"Add to cart"}
+          label="Add to cart"
           icon={"bag-shopping"}
           onClick={addToCart}
           disabled={!buttonIsEnabled}
-        />
+        ></Button>
       </div>
     </div>
   );

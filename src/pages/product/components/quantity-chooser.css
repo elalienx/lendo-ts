@@ -1,5 +1,12 @@
 .quantity-chooser {
-  display: flex;
-  align-items: center;
-  gap: var(--space-small);
+  .content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-small);
+    margin-bottom: var(--space-small);
+  }
+}
+
+.no-units-left {
+  color: var(--color-red);
 }

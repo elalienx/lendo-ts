@@ -6,9 +6,6 @@ interface Props {
   /** The unique identifier gropping the radio options. */
   id: string;
 
-  /** The title of the radio group the user sees. */
-  label: string;
-
   /** The state controlling the input. */
   state: [number, Function];
 
@@ -16,7 +13,7 @@ interface Props {
   options: string[];
 }
 
-export default function InputRadioColor({ id, label, state, options }: Props) {
+export default function InputRadioColor({ id, state, options }: Props) {
   // Components
   const Options = options.map((item, index) => (
     <RadioColor
@@ -28,10 +25,5 @@ export default function InputRadioColor({ id, label, state, options }: Props) {
     />
   ));
 
-  return (
-    <div className="input-radio-color">
-      <h3>{label}</h3>
-      <div className="options">{Options}</div>
-    </div>
-  );
+  return <div className="input-radio-color">{Options} </div>;
 }

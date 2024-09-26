@@ -7,15 +7,18 @@ interface Props {
   state: [number, Function];
 
   /** The maximum ammount of units of this product. Used to set a limit of how many you can choose. */
-  availableQuantity: number;
+  unitsLeft: number;
 }
 
-export default function QuantityChooser({ state, availableQuantity }: Props) {
+export default function QuantityChooser({ state, unitsLeft }: Props) {
   const [quantity, setQuantity] = state;
+
+  // Safeguard
+  if (unitsLeft === 0) return <small className="no-units-left">No units left</small>;
 
   // Methods
   function addQuantity() {
-    if (quantity < availableQuantity) setQuantity(quantity + 1);
+    if (quantity < unitsLeft) setQuantity(quantity + 1);
   }
 
   function removeQuantity() {
@@ -23,14 +26,13 @@ export default function QuantityChooser({ state, availableQuantity }: Props) {
   }
 
   return (
-    <p className="quantity-chooser">
-      Quantity: {quantity}
-      <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={quantity === 1} />
-      <ButtonCircle
-        icon="plus"
-        onClick={() => addQuantity()}
-        disabled={quantity === availableQuantity}
-      />
-    </p>
+    <section className="quantity-chooser">
+      <div className="content">
+        <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={quantity === 1} />
+        {quantity}
+        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={quantity === unitsLeft} />
+      </div>
+      <small>{unitsLeft} units left</small>
+    </section>
   );
 }
