@@ -6,6 +6,10 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ⚠️ **Note:** The Product page is **intentionally** missing as it will be rebuilt to improve the add-to-cart feature and refactor the code.
 
+## Installation
+
+⚠️ **Note:** This project uses the faster _PNPM_ (note the P) instead of Node Package Manager (NPM withouth P) this allows for faster installations but require one extra step on first time usage.
+
 ## Planed improvements
 
 1. Migrated to TypeScript. ✅ DONE
