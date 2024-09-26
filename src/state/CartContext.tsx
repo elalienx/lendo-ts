@@ -7,13 +7,13 @@ import type CartItem from "types/CartItem";
 import type CartActions from "types/CartActions";
 
 // Interfaces
+interface Props {
+  children?: ReactNode;
+  initialValue?: CartItem[];
+}
 interface ContextValue {
   cart: CartItem[];
   dispatch: Dispatch<CartActions>;
-}
-interface Props {
-  children: ReactNode;
-  initialValue: CartItem[];
 }
 
 // Properties
