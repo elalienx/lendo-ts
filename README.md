@@ -29,8 +29,9 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ## Pending
 
-1. Add Checkout fixture page.
+1. Add Checkout fixture page. ✅ DONE
 1. Improve `<QuantityChooser>` by adding a input number.
-1. Improve `<InputRadio>` for variants by using proposed design in Sketch.
+1. Improve `<InputRadio>` for variants by using proposed design in Sketch. ✅ DONE
 1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
 1. Improve `<CartItem>` userfulness by mentioning the selected color and variant.
+1. Add state to input radio fixture.
