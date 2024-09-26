@@ -1,6 +1,5 @@
 h1,
 h2,
-h3,
 p {
   margin-top: 0;
   margin-bottom: var(--space-small);
@@ -14,13 +13,6 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 0;
-  font-size: 21px;
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
-}
-
-h3 {
   font-size: var(--font-size-normal);
   font-weight: var(--font-weight-bold);
 }

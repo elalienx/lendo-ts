@@ -72,15 +72,15 @@ export default function Product({ data }: Props) {
         <h1>{product.name}</h1>
         <small>{extraDetails}</small>
         <section className="color">
-          <h3>Color:</h3>
+          <h2>Color:</h2>
           <InputRadioColor id={"color"} state={[colorIndex, onChangeOption]} options={colors} />
         </section>
         <section className="variant">
-          <h3>Variant:</h3>
+          <h2>Variant:</h2>
           <InputRadio id={"variant"} state={[variantIndex, setVariantIndex]} options={variants} />
         </section>
         <section className="quantity-chooser">
-          <h3>Quantity:</h3>
+          <h2>Quantity:</h2>
           <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
         </section>
         <PriceTag price={total} />
