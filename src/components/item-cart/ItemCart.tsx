@@ -58,7 +58,6 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   return (
     <article className="item-cart">
-      <h3>debug</h3>
       {/* Left */}
       <ImageThumbnail image={""} alt={""} />
 
