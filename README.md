@@ -8,7 +8,11 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ## Installation
 
-⚠️ **Note:** This project uses the faster _PNPM_ (note the P) instead of Node Package Manager (NPM withouth P) this allows for faster installations but require one extra step on first time usage.
+⚠️ **Note:** This project uses the faster [PNPM](https://pnpm.io) (notice the P) instead of Node Package Manager (NPM withouth P) this allows for faster installations but require one extra step on first time usage.
+
+1. Install PNPM: `npm install -g pnpm`.
+1. Install dependencies: `pnpm install` (notice the P)
+1. Run the project: `npm run dev`
 
 ## Planed improvements
 
