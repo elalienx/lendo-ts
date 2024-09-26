@@ -43,11 +43,9 @@ export default function Checkout({ data }: Props) {
           <span className="label">Grand total:</span>
           <PriceTag price={grandTotal} />
         </section>
-        <Button
-          label="Proceed to payment"
-          icon="cash-register"
-          onClick={() => alert("End of demo 🎉")}
-        />
+        <Button icon="cash-register" onClick={() => alert("End of demo 🎉")}>
+          Proceed to payment
+        </Button>
       </div>
     </div>
   );

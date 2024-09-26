@@ -1,3 +1,6 @@
+// Node modules
+import { ReactNode } from "react";
+
 // Project files
 import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
 import IconPrefix from "types/IconPrefix";
@@ -5,7 +8,7 @@ import "./button.css";
 
 interface Props {
   /** Button contents. */
-  label: string;
+  children: ReactNode;
 
   /** The click handler. */
   onClick?: () => void;
@@ -20,11 +23,11 @@ interface Props {
   icon: string;
 }
 
-export default function Button({ label, onClick, disabled, icon_prefix = "fas", icon }: Props) {
+export default function Button({ children, onClick, disabled, icon_prefix = "fas", icon }: Props) {
   return (
     <button className="button" disabled={disabled} onClick={onClick}>
       {icon && <FontAwesomeIcon icon={[icon_prefix, icon]} />}
-      {label}
+      {children}
     </button>
   );
 }

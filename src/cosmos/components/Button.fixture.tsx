@@ -6,6 +6,14 @@ const label = "Add to cart";
 const icon = "bag-shopping";
 
 export default {
-  Normal: <Button label={label} icon={icon} />,
-  Dissabed: <Button label={label} icon={icon} disabled />,
+  Normal: (
+    <Button icon={icon} disabled={false}>
+      {label}
+    </Button>
+  ),
+  Dissabed: (
+    <Button icon={icon} disabled={true}>
+      {label}
+    </Button>
+  ),
 };

@@ -84,12 +84,9 @@ export default function Product({ data }: Props) {
           <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
         </section>
         <PriceTag price={total} />
-        <Button
-          label="Add to cart"
-          icon={"bag-shopping"}
-          onClick={addToCart}
-          disabled={!buttonIsEnabled}
-        ></Button>
+        <Button icon={"bag-shopping"} onClick={addToCart} disabled={!buttonIsEnabled}>
+          Add to cart
+        </Button>
       </div>
     </div>
   );
