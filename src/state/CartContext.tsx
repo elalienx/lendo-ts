@@ -13,6 +13,7 @@ interface ContextValue {
 }
 interface Props {
   children: ReactNode;
+  initialValue: CartItem[];
 }
 
 // Properties
@@ -23,9 +24,9 @@ const initialValues: ContextValue = {
 const Context = createContext(initialValues);
 
 // For the parent
-export function CartProvider({ children }: Props) {
+export function CartProvider({ children, initialValue = [] }: Props) {
   // Local state
-  const [cart, dispatch] = useReducer(cartReducer, []);
+  const [cart, dispatch] = useReducer(cartReducer, initialValue);
 
   return <Context.Provider value={{ cart, dispatch }}>{children}</Context.Provider>;
 }
