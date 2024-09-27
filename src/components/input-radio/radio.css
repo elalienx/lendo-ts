@@ -1,6 +1,6 @@
 .radio {
   position: relative;
-  background-color: white;
+  background-color: pink;
   border-radius: var(--border-radius);
   padding: 4px var(--space-small);
   min-width: 32px;
@@ -9,7 +9,10 @@
   input {
     appearance: none;
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin: 0;
     border: solid 2px white;
     border-radius: var(--border-radius);
