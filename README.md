@@ -24,8 +24,8 @@ For the full explanation, see the original [project](https://github.com/elalienx
 ## Bonus features
 
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
-1. Add Biome linter.
 1. Create custom toast notification to reduce dependencies.
+1. Add Biome linter. ✅ DONE
 
 ## Pending
 
