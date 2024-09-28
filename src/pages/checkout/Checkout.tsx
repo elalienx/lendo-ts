@@ -2,12 +2,12 @@
 import Button from "components/button/Button";
 import EmptyState from "components/empty-state/EmptyState";
 import ItemCart from "components/item-cart/ItemCart";
+import PriceTotal from "components/price-total/PriceTotal";
 import { useCart } from "state/CartContext";
 import calculateGrandTotal from "scripts/calculateGrandTotal";
 import type Product from "types/Product";
 import EmptyStateText from "./empty-state-text.json";
 import "./checkout.css";
-import PriceTotal from "components/price-total/PriceTotal";
 
 interface Props {
   data: Product[];
