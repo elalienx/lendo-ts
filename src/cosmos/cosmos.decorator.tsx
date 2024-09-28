@@ -1,5 +1,5 @@
 // Node modules
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Project files
 import "../styles/style.css"; // global CSS including font styles, colors, spacing, etc.

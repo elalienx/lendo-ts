@@ -1,11 +1,11 @@
 // Node modules
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Project files
 import Data from "data/inventory.json";
 import Checkout from "pages/checkout/Checkout";
 import { CartProvider } from "state/CartContext";
-import CartItem from "types/CartItem";
+import type CartItem from "types/CartItem";
 
 // Properties
 const { items } = Data;

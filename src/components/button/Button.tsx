@@ -1,9 +1,9 @@
 // Node modules
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Project files
 import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
-import IconPrefix from "types/IconPrefix";
+import type IconPrefix from "types/IconPrefix";
 import "./button.css";
 
 interface Props {
