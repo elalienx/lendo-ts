@@ -6,7 +6,10 @@ export default function addItem(state: CartItem[], payload: CartItem) {
 
   // Safeguards: Check if the item already exists in the cart with the same options
   const itemIndex = state.findIndex(
-    (item) => item.product_id === newItem.product_id && item.colorIndex === newItem.colorIndex
+    (item) =>
+      item.product_id === newItem.product_id &&
+      item.colorIndex === newItem.colorIndex &&
+      item.variantIndex === newItem.variantIndex
   );
 
   // If the item doesn't exist, add it to the cart

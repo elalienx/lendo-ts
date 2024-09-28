@@ -7,9 +7,9 @@ import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import PriceTag from "components/price-tag/PriceTag";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
+import extractVariant from "scripts/extractVariant";
 import { useCart } from "state/CartContext";
 import "./item-cart.css";
-import extractVariant from "scripts/extractVariant";
 
 /**
  * Refactor:
@@ -36,6 +36,10 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   // Properties
   const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
+  const colorText = `Color: ${productOption.color}`;
+  const extractedVariant = extractVariant(productOption, ["color", "quantity"])[variantIndex];
+  const variantText = extractedVariant ? ` | Variant: ${extractedVariant}` : "";
+  const details = colorText + variantText;
   const subTotal = Number(price) * selectedQuantity;
   const buttonMinusIsEnabled = selectedQuantity === 1;
   const buttonAddIsEnabled = selectedQuantity >= quantityAvailable;
@@ -64,7 +68,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
       <div className="item-group">
         <div className="product">
           <p>{name}</p>
-          <small>{productOption.color}</small>
+          <small>{details}</small>
         </div>
         <div className="buttons">
           <span>{totalQuantity}</span>
