@@ -24,14 +24,14 @@ For the full explanation, see the original [project](https://github.com/elalienx
 ## Bonus features
 
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
-1. Create custom toast notification to reduce dependencies.
 1. Add Biome linter. ✅ DONE
+1. Create custom toast notification to reduce dependencies. ❌ I CHANGED MY MIND. The libraty is only 5kb and it has a nice little feature of allowing to stack multiple notifications. Ideal for the Checkout page where you can remove multiple items in a short ammount of time.
 
 ## Pending
 
 1. Improve `<QuantityChooser>` by adding an input number.
 1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
 1. Improve `<CartItem>` userfulness by mentioning the selected color and variant.
-1. Add state to input radio fixture.
+1. Add state to input radio fixture. ✅ DONE
 1. Improve `<InputRadio>` for variants by using proposed design in Sketch. ✅ DONE
 1. Add Checkout fixture page. ✅ DONE
