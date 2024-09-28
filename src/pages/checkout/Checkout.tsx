@@ -2,7 +2,6 @@
 import Button from "components/button/Button";
 import EmptyState from "components/empty-state/EmptyState";
 import ItemCart from "components/item-cart/ItemCart";
-import PriceTag from "components/price-tag/PriceTag";
 import { useCart } from "state/CartContext";
 import calculateGrandTotal from "scripts/calculateGrandTotal";
 import type Product from "types/Product";
