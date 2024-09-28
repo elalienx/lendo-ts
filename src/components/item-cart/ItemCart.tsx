@@ -47,7 +47,6 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   // Methods
   function onAddQuantity() {
-    console.log("onAddQuantity()");
     dispatch({ type: "increase-quantity", payload: { index, productOption } });
   }
 

@@ -28,7 +28,6 @@ export default function Checkout({ data }: Props) {
   if (!cart.length) return <EmptyState item={EmptyStateText} />;
 
   // Components
-  // Refactor: Once we have a better "add-item" we won't need the index
   const Items = cart.map((item, index) => (
     <ItemCart key={index} product={matchingProducts[index]} cartItem={item} index={index} />
   ));
