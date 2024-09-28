@@ -23,16 +23,16 @@
     display: grid;
     grid-template-columns: 6fr 6fr;
     gap: var(--space-big);
-    grid-template-areas: "b a";
+    grid-template-areas: "a b";
 
     .image-thumbnail {
-      grid-area: a;
+      grid-area: b;
       aspect-ratio: 16/10;
       margin-bottom: 0; /** resets margin */
     }
 
     .content-group {
-      grid-area: b;
+      grid-area: a;
     }
   }
 }
