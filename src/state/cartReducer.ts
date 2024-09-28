@@ -9,6 +9,8 @@ import type CartActions from "types/CartActions";
 export default function cartReducer(state: CartItem[], actions: CartActions) {
   const { type, payload } = actions;
 
+  console.log("cartReducer", type);
+
   switch (type) {
     case "add-item":
       return addItem(state, payload);
