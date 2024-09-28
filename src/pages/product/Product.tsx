@@ -9,7 +9,7 @@ import EmptyState from "components/empty-state/EmptyState";
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import InputRadio from "components/input-radio/InputRadio";
 import InputRadioColor from "components/input-radio-color/InputRadioColor";
-import PriceTag from "components/price-tag/PriceTag";
+import PriceTotal from "components/price-total/PriceTotal";
 import extractVariant from "scripts/extractVariant";
 import { useCart } from "state/CartContext";
 import type CartItem from "types/CartItem";
@@ -68,9 +68,11 @@ export default function Product({ data }: Props) {
   return (
     <div id="product" className="page">
       <ImageThumbnail image={""} alt={""} />
-      <div className="content-group">
+      <header className="header">
         <h1>{product.name}</h1>
         <small>{extraDetails}</small>
+      </header>
+      <div className="content-group">
         <section className="color">
           <h2>Color:</h2>
           <InputRadioColor id={"color"} state={[colorIndex, onChangeOption]} options={colors} />
@@ -83,7 +85,7 @@ export default function Product({ data }: Props) {
           <h2>Quantity:</h2>
           <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
         </section>
-        <PriceTag price={total} />
+        <PriceTotal label={"Price"} price={total} />
         <Button icon={"bag-shopping"} onClick={addToCart} disabled={!buttonIsEnabled}>
           Add to cart
         </Button>

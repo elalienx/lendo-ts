@@ -38,3 +38,10 @@ small {
   color: var(--color-gray);
   text-transform: uppercase;
 }
+
+/* Desktop */
+@media (min-width: 750px) {
+  h1 {
+    font-size: 64px;
+  }
+}

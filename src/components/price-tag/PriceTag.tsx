@@ -6,9 +6,6 @@ interface Props {
   price: number;
 }
 
-/**
- * In the future, currency can be a prop.
- */
 export default function PriceTag({ price }: Props) {
   // Properties
   const locale = "sv-SE";
