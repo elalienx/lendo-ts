@@ -18,11 +18,6 @@ interface ContextValue {
 }
 
 // Properties
-const debugState: CartItem[] = [
-  { product_id: 1, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Philips hue bulb, color white, 6.5 wats
-  { product_id: 1, colorIndex: 1, variantIndex: 0, selectedQuantity: 1 }, // Philips hue bulb, color red, 6.5 wats
-  { product_id: 6, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Bluetooth speaker, color black
-];
 const initialValues: ContextValue = {
   cart: [],
   dispatch: () => {},
@@ -32,7 +27,7 @@ const Context = createContext(initialValues);
 // For the parent
 export function CartProvider({ children, initialValue = [] }: Props) {
   // Local state
-  const [cart, dispatch] = useReducer(cartReducer, debugState);
+  const [cart, dispatch] = useReducer(cartReducer, initialValue);
 
   return <Context.Provider value={{ cart, dispatch }}>{children}</Context.Provider>;
 }

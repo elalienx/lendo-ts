@@ -58,7 +58,6 @@ export default function Product({ data }: Props) {
   function addToCart() {
     const product_id = Number(id);
     const newItem: CartItem = { product_id, colorIndex, variantIndex, selectedQuantity };
-    console.log("1 newItem", newItem);
     const toastStyle = { backgroundColor: "#29c768", color: "white" };
 
     dispatch({ type: "add-item", payload: newItem });
