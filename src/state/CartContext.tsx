@@ -1,5 +1,6 @@
 // Node modules
-import { createContext, Dispatch, ReactNode, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { type Dispatch, type ReactNode } from "react";
 
 // Project files
 import cartReducer from "./cartReducer";

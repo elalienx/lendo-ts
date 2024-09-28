@@ -1,6 +1,6 @@
 // Project files
 import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
-import IconPrefix from "types/IconPrefix";
+import type IconPrefix from "types/IconPrefix";
 import "./button-circle.css";
 
 interface Props {

@@ -7,7 +7,7 @@ import "@testing-library/jest-dom";
 // Project files
 import Data from "data/inventory.json";
 import Home from "./Home";
-import Product from "types/Product";
+import type Product from "types/Product";
 
 /**
  * These tests are wrapped in BrowserRouter to support routing

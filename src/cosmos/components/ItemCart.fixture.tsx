@@ -1,5 +1,5 @@
 // Node modules
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Project file
 import type CartItem from "types/CartItem";

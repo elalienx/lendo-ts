@@ -1,6 +1,6 @@
 // Propject files
-import CartItem from "./CartItem";
-import ProductOption from "./ProductOption";
+import type CartItem from "./CartItem";
+import type ProductOption from "./ProductOption";
 
 type CartActions = AddItem | DeleteItem | AddQuantity | RemoveQuantity;
 

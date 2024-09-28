@@ -1,5 +1,5 @@
 // Node modules
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 
 // Project files
