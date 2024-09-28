@@ -1,4 +1,7 @@
 #product {
+  display: grid;
+  gap: var(--space-medium);
+
   h1 {
     margin-bottom: 8px;
   }
@@ -7,7 +10,6 @@
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
-    margin-bottom: var(--space-medium);
   }
 
   .content-group {
@@ -20,19 +22,24 @@
 
 @media (min-width: 750px) {
   #product {
-    display: grid;
-    grid-template-columns: 6fr 6fr;
-    gap: var(--space-big);
-    grid-template-areas: "a b";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 48px; /* wide on purpose */
+    grid-template-areas:
+      "header header"
+      "content image";
+
+    .header {
+      grid-area: header;
+    }
 
     .image-thumbnail {
-      grid-area: b;
+      grid-area: image;
       aspect-ratio: 16/10;
-      margin-bottom: 0; /** resets margin */
     }
 
     .content-group {
-      grid-area: a;
+      grid-area: content;
     }
   }
 }

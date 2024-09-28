@@ -68,11 +68,11 @@ export default function Product({ data }: Props) {
   return (
     <div id="product" className="page">
       <ImageThumbnail image={""} alt={""} />
+      <header className="header">
+        <h1>{product.name}</h1>
+        <small>{extraDetails}</small>
+      </header>
       <div className="content-group">
-        <header>
-          <h1>{product.name}</h1>
-          <small>{extraDetails}</small>
-        </header>
         <section className="color">
           <h2>Color:</h2>
           <InputRadioColor id={"color"} state={[colorIndex, onChangeOption]} options={colors} />
