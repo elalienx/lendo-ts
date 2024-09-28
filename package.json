@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "cosmos": "cosmos",
+    "lint": "biome lint --write",
     "test": "vitest"
   },
   "dependencies": {
