@@ -27,15 +27,16 @@ interface Props {
 
 export default function ItemCart({ product, cartItem, index }: Props) {
   const { name, options, price } = product;
-  const { colorIndex: color_index, selectedQuantity } = cartItem;
+  const { colorIndex, variantIndex, selectedQuantity } = cartItem;
 
   // Global state
   const { dispatch } = useCart();
 
   // Properties
-  const productOption = options[color_index];
+  const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
   const subTotal = Number(price) * selectedQuantity;
+  const details = `Color: ${productOption.color} | Variant: ${variantIndex}`;
   const buttonMinusIsEnabled = selectedQuantity === 1;
   const buttonAddIsEnabled = selectedQuantity >= quantityAvailable;
 
@@ -58,12 +59,12 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   return (
     <article className="item-cart">
-      {/* Left */}
       <ImageThumbnail image={""} alt={""} />
-
-      {/* Middle */}
-      <div className="text-group">
-        <p className="name">{name}</p>
+      <div className="item-group">
+        <div className="product">
+          <p>{name}</p>
+          <small>{details}</small>
+        </div>
         <div className="buttons">
           <span>Quantity: {selectedQuantity}</span>
           <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={buttonMinusIsEnabled} />
@@ -71,8 +72,6 @@ export default function ItemCart({ product, cartItem, index }: Props) {
           <ButtonCircle icon="trash-can" onClick={onDelete} />
         </div>
       </div>
-
-      {/* Right */}
       <PriceTag price={subTotal} />
     </article>
   );
