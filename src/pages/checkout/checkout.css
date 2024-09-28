@@ -5,12 +5,4 @@
     gap: var(--space-medium);
     align-items: flex-start;
   }
-
-  .grand-total {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: var(--space-small);
-    border-top: solid 1px var(--color-gray);
-  }
 }

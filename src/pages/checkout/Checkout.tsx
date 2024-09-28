@@ -8,6 +8,7 @@ import calculateGrandTotal from "scripts/calculateGrandTotal";
 import type Product from "types/Product";
 import EmptyStateText from "./empty-state-text.json";
 import "./checkout.css";
+import PriceTotal from "components/price-total/PriceTotal";
 
 interface Props {
   data: Product[];
@@ -28,7 +29,7 @@ export default function Checkout({ data }: Props) {
   if (!cart.length) return <EmptyState item={EmptyStateText} />;
 
   // Components
-  // Refactor: Once we have a better "add-item" we won't need the
+  // Refactor: Once we have a better "add-item" we won't need the index
   const Items = cart.map((item, index) => (
     <ItemCart key={index} product={matchingProducts[index]} cartItem={item} index={index} />
   ));
@@ -39,10 +40,7 @@ export default function Checkout({ data }: Props) {
         <h1>Your cart</h1>
         <small>{cart.length} items in cart</small>
         {Items}
-        <section className="grand-total">
-          <span className="label">Grand total:</span>
-          <PriceTag price={grandTotal} />
-        </section>
+        <PriceTotal label={"Grand total"} price={grandTotal} />
         <Button icon="cash-register" onClick={() => alert("End of demo 🎉")}>
           Proceed to payment
         </Button>
