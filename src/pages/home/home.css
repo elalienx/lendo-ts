@@ -1,4 +1,8 @@
 #home {
+  h1 {
+    margin-bottom: var(--space-medium);
+  }
+
   .grid {
     display: grid;
     gap: var(--space-small);
@@ -7,6 +11,10 @@
 
 @media (min-width: 750px) {
   #home {
+    h1 {
+      margin-bottom: 48px;
+    }
+
     .grid {
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: var(--space-medium);

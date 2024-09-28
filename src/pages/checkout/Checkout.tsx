@@ -36,7 +36,7 @@ export default function Checkout({ data }: Props) {
   return (
     <div id="checkout" className="page">
       <div className="content-group">
-        <h1>Your Cart</h1>
+        <h1>Your cart</h1>
         <small>{cart.length} items in cart</small>
         {Items}
         <section className="grand-total">
