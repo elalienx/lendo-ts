@@ -1,7 +1,7 @@
 // Project files
 import type CartItem from "types/CartItem";
 
-export default function removeQuantity(state: CartItem[], payload: number) {
+export default function decreaseQuantity(state: CartItem[], payload: number) {
   // Properties
   const index = payload;
   const newState = [...state];

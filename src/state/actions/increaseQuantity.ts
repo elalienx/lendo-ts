@@ -10,7 +10,7 @@ interface Payload {
   productOption: ProductOption;
 }
 
-export default function addQuantity(state: CartItem[], payload: Payload) {
+export default function increaseQuantity(state: CartItem[], payload: Payload) {
   const { index, productOption } = payload;
 
   // Properties
