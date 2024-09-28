@@ -21,7 +21,7 @@ interface ContextValue {
 const debugState: CartItem[] = [
   { product_id: 1, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Philips hue bulb, color white, 6.5 wats
   { product_id: 1, colorIndex: 1, variantIndex: 0, selectedQuantity: 1 }, // Philips hue bulb, color red, 6.5 wats
-  { product_id: 5, colorIndex: 1, variantIndex: 0, selectedQuantity: 1 }, // Bluetooth speaker, color black
+  { product_id: 6, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Bluetooth speaker, color black
 ];
 const initialValues: ContextValue = {
   cart: [],

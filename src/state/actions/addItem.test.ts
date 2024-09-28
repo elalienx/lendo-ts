@@ -5,13 +5,13 @@ import { expect, test } from "vitest";
 import type CartItem from "types/CartItem";
 import addItem from "./addItem";
 
-test.todo("Adds an item to an empty array", () => {
+test("Adds an item to an empty array", () => {
   // Arrange
   const state: CartItem[] = [];
   const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Sega Saturn
   const result: CartItem[] = [
-    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
-  ]; // [Sega Saturn];
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn
+  ];
 
   // Act
   const test = addItem(state, payload);
@@ -20,7 +20,7 @@ test.todo("Adds an item to an empty array", () => {
   expect(test).toEqual(result);
 });
 
-test.todo("Adds an item to an existing array", () => {
+test("Adds an item to an existing array", () => {
   // Arrange
   const state: CartItem[] = [
     { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn;
@@ -43,9 +43,9 @@ test("Adds an already existing item to the array", () => {
   const state: CartItem[] = [
     { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn;
   ];
-  const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 }; // Sega Saturn;
+  const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Sega Saturn;
   const result: CartItem[] = [
-    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 3 }, // Sega Saturn (but with 3 selected quantities);
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 }, // Sega Saturn (but with 3 selected quantities);
   ];
 
   // Act

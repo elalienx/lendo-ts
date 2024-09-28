@@ -9,6 +9,7 @@ import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import { useCart } from "state/CartContext";
 import "./item-cart.css";
+import extractVariant from "scripts/extractVariant";
 
 /**
  * Refactor:
@@ -36,9 +37,9 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
   const subTotal = Number(price) * selectedQuantity;
-  const details = `Color: ${productOption.color} | Variant: ${variantIndex}`;
   const buttonMinusIsEnabled = selectedQuantity === 1;
   const buttonAddIsEnabled = selectedQuantity >= quantityAvailable;
+  const totalQuantity = `Quantity: ${selectedQuantity}/${productOption.quantity}`;
 
   // Methods
   function onAddQuantity() {
@@ -63,10 +64,10 @@ export default function ItemCart({ product, cartItem, index }: Props) {
       <div className="item-group">
         <div className="product">
           <p>{name}</p>
-          <small>{details}</small>
+          <small>{productOption.color}</small>
         </div>
         <div className="buttons">
-          <span>Quantity: {selectedQuantity}</span>
+          <span>{totalQuantity}</span>
           <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={buttonMinusIsEnabled} />
           <ButtonCircle icon="plus" onClick={onAddQuantity} disabled={buttonAddIsEnabled} />
           <ButtonCircle icon="trash-can" onClick={onDelete} />
