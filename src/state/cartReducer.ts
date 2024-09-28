@@ -1,7 +1,7 @@
 // Project files
 import addItem from "./actions/addItem";
-import addQuantity from "./actions/addQuantity";
-import removeQuantity from "./actions/removeQuantity";
+import increaseQuantity from "./actions/increaseQuantity";
+import decreaseQuantity from "./actions/decreaseQuantity";
 import deleteItem from "./actions/deleteItem";
 import type CartItem from "types/CartItem";
 import type CartActions from "types/CartActions";
@@ -9,13 +9,15 @@ import type CartActions from "types/CartActions";
 export default function cartReducer(state: CartItem[], actions: CartActions) {
   const { type, payload } = actions;
 
+  console.log("cartReducer", type);
+
   switch (type) {
     case "add-item":
       return addItem(state, payload);
-    case "add-quantity":
-      return addQuantity(state, payload);
-    case "remove-quantity":
-      return removeQuantity(state, payload);
+    case "increase-quantity":
+      return increaseQuantity(state, payload);
+    case "decrease-quantity":
+      return decreaseQuantity(state, payload);
     case "delete-item":
       return deleteItem(state, payload);
     default:

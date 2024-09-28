@@ -4,7 +4,7 @@ import { expect, test } from "vitest";
 // Project files
 import type CartItem from "types/CartItem";
 import type ProductOption from "types/ProductOption";
-import addQuantity from "./addQuantity";
+import increaseQuantity from "./increaseQuantity";
 
 interface Payload {
   /** The index of the item to remove from cart. */
@@ -32,7 +32,7 @@ test("Updates an item in the state", () => {
   ];
 
   // Act
-  const test = addQuantity(state, payload);
+  const test = increaseQuantity(state, payload);
 
   // Assert
   expect(test).toEqual(result);
@@ -56,7 +56,7 @@ test("Do not update state if there is not quantity available", () => {
   ];
 
   // Act
-  const test = addQuantity(state, payload);
+  const test = increaseQuantity(state, payload);
 
   // Assert
   expect(test).toEqual(result);

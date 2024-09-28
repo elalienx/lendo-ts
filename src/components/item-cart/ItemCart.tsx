@@ -9,6 +9,7 @@ import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import { useCart } from "state/CartContext";
 import "./item-cart.css";
+import extractVariant from "scripts/extractVariant";
 
 /**
  * Refactor:
@@ -27,26 +28,27 @@ interface Props {
 
 export default function ItemCart({ product, cartItem, index }: Props) {
   const { name, options, price } = product;
-  const { colorIndex: color_index, selectedQuantity } = cartItem;
+  const { colorIndex, variantIndex, selectedQuantity } = cartItem;
 
   // Global state
   const { dispatch } = useCart();
 
   // Properties
-  const productOption = options[color_index];
+  const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
   const subTotal = Number(price) * selectedQuantity;
   const buttonMinusIsEnabled = selectedQuantity === 1;
   const buttonAddIsEnabled = selectedQuantity >= quantityAvailable;
+  const totalQuantity = `Quantity: ${selectedQuantity}/${productOption.quantity}`;
 
   // Methods
   function onAddQuantity() {
     console.log("onAddQuantity()");
-    dispatch({ type: "add-quantity", payload: { index, productOption } });
+    dispatch({ type: "increase-quantity", payload: { index, productOption } });
   }
 
   function onRemoveQuantity() {
-    dispatch({ type: "remove-quantity", payload: index });
+    dispatch({ type: "decrease-quantity", payload: index });
   }
 
   function onDelete() {
@@ -58,21 +60,19 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   return (
     <article className="item-cart">
-      {/* Left */}
       <ImageThumbnail image={""} alt={""} />
-
-      {/* Middle */}
-      <div className="text-group">
-        <p className="name">{name}</p>
+      <div className="item-group">
+        <div className="product">
+          <p>{name}</p>
+          <small>{productOption.color}</small>
+        </div>
         <div className="buttons">
-          <span>Quantity: {selectedQuantity}</span>
+          <span>{totalQuantity}</span>
           <ButtonCircle icon="minus" onClick={onRemoveQuantity} disabled={buttonMinusIsEnabled} />
           <ButtonCircle icon="plus" onClick={onAddQuantity} disabled={buttonAddIsEnabled} />
           <ButtonCircle icon="trash-can" onClick={onDelete} />
         </div>
       </div>
-
-      {/* Right */}
       <PriceTag price={subTotal} />
     </article>
   );

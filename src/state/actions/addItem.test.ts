@@ -8,10 +8,10 @@ import addItem from "./addItem";
 test("Adds an item to an empty array", () => {
   // Arrange
   const state: CartItem[] = [];
-  const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Sega Statun
+  const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Sega Saturn
   const result: CartItem[] = [
-    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
-  ]; // [Sega Statun];
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn
+  ];
 
   // Act
   const test = addItem(state, payload);
@@ -23,12 +23,29 @@ test("Adds an item to an empty array", () => {
 test("Adds an item to an existing array", () => {
   // Arrange
   const state: CartItem[] = [
-    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
-  ]; // [Sega Statun];
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn;
+  ];
   const payload: CartItem = { product_id: 20, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Nintendo 64
   const result: CartItem[] = [
-    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Statun;
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn;
     { product_id: 20, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Nintendo 64
+  ];
+
+  // Act
+  const test = addItem(state, payload);
+
+  // Assert
+  expect(test).toEqual(result);
+});
+
+test("Adds an already existing item to the array", () => {
+  // Arrange
+  const state: CartItem[] = [
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Sega Saturn;
+  ];
+  const payload: CartItem = { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }; // Sega Saturn;
+  const result: CartItem[] = [
+    { product_id: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 }, // Sega Saturn (but with 3 selected quantities);
   ];
 
   // Act

@@ -14,7 +14,7 @@ import extractVariant from "scripts/extractVariant";
 import { useCart } from "state/CartContext";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
-import QuantityChooser from "./components/QuantityChooser";
+import QuantityChooser from "../../components/quantity-chooser/QuantityChooser";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
 

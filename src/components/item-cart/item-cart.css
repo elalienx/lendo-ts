@@ -1,5 +1,5 @@
 .item-cart {
-  --image-size: 32px;
+  --image-size: 48px;
   --button-circle-size: 16px;
 
   display: flex;
@@ -8,17 +8,18 @@
   width: 100%;
   color: var(--color-black);
 
-  /* Left */
   .image-thumbnail {
     width: var(--image-size);
     height: var(--image-size);
   }
 
-  /* Middle */
-  .name {
+  .item-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: var(--space-small);
+  }
+
+  .product p {
     margin-bottom: 0;
   }
 
@@ -28,8 +29,20 @@
     gap: var(--space-small);
   }
 
-  /* Right */
   .price-tag {
-    margin-left: auto; /** to automatically push it to the right, requires flexbox. */
+    margin-left: auto; /** to push content to the right */
+  }
+}
+
+/* Desktop */
+@media (min-width: 750px) {
+  .item-cart {
+    .item-group {
+      flex-direction: row;
+    }
+
+    .product {
+      min-width: 200px;
+    }
   }
 }

@@ -2,7 +2,7 @@
 import type CartItem from "./CartItem";
 import type ProductOption from "./ProductOption";
 
-type CartActions = AddItem | DeleteItem | AddQuantity | RemoveQuantity;
+type CartActions = AddItem | DeleteItem | IncreaseQuantity | DecreaseQuantity;
 
 interface AddItem {
   type: "add-item";
@@ -14,16 +14,16 @@ interface DeleteItem {
   payload: number; // the index of the item to remove from cart
 }
 
-interface AddQuantity {
-  type: "add-quantity";
+interface IncreaseQuantity {
+  type: "increase-quantity";
   payload: {
     index: number; // the index of the item to remove from cart
     productOption: ProductOption; // to know how many units we have already to not exceed the limit
   };
 }
 
-interface RemoveQuantity {
-  type: "remove-quantity";
+interface DecreaseQuantity {
+  type: "decrease-quantity";
   payload: number; // the index of the item to remove the item quantity
 }
 
