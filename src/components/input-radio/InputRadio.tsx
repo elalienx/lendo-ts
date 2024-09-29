@@ -15,7 +15,7 @@ interface Props {
 
 export default function InputRadio({ id, state, options }: Props) {
   // Safeguard
-  if (!options.length) return <small className="text-warning">No options available</small>;
+  if (!options.length) return <small>No options available</small>; // no need to put in red, is not an error if there is no variants
 
   // Components
   const Options = options.map((item, index) => (

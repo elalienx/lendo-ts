@@ -10,14 +10,14 @@ import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import InputRadio from "components/input-radio/InputRadio";
 import InputRadioColor from "components/input-radio-color/InputRadioColor";
 import PriceTotal from "components/price-total/PriceTotal";
+import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 import extractVariant from "scripts/extractVariant";
 import { useCart } from "state/CartContext";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
-import QuantityChooser from "../../components/quantity-chooser/QuantityChooser";
+import Header from "./components/Header";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
-import Header from "./components/Header";
 
 interface Props {
   data: Product[];
@@ -34,15 +34,14 @@ export default function Product({ data }: Props) {
   const [variantIndex, setVariantIndex] = useState(-1); // unset by default
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  const product: Product | undefined = data.find((item) => item.id === Number(id));
-
   // Safeguards
+  const product: Product | undefined = data.find((item) => item.id === Number(id));
   if (!product) return <EmptyState item={EmptyStateTexts.does_not_exist} />;
   if (!product.available) return <EmptyState item={EmptyStateTexts.out_of_stock} />;
 
   // Properties
-  const colors = product.options.flatMap((item) => item.color);
   const productOption = product.options[colorIndex];
+  const colors = product.options.flatMap((item) => item.color);
   const unitsLeft = productOption.quantity;
   const variants = extractVariant(productOption, ["color", "quantity"]);
   const totalPrice = Number(product.price) * selectedQuantity;
@@ -50,8 +49,10 @@ export default function Product({ data }: Props) {
 
   // Methods
   function onChangeOption(newColorIndex: number) {
+    const hasVariant = variants.length > 0;
+
     setColorIndex(newColorIndex);
-    setVariantIndex(-1);
+    setVariantIndex(hasVariant ? -1 : 0); // if product has no variant, this allows to enable the button
     setSelectedQuantity(1);
   }
 
