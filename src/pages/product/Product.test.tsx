@@ -1,47 +1,43 @@
 // Node modules
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { expect, test, afterEach } from "vitest";
-import { fireEvent, render, screen, cleanup } from "@testing-library/react";
+import { render, fireEvent, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 // Project files
 import Product from "./Product";
 import Data from "data/inventory.json";
-import { Toaster } from "react-hot-toast";
+
+afterEach(() => {
+  cleanup();
+  toast.remove();
+});
 
 // Properties
 const { items } = Data;
 
-// Components
-function TestPage() {
-  return (
-    <div>
-      <h1>Test Page</h1>
-    </div>
-  );
-}
-
-// Ensure the DOM is cleaned up after each test
-afterEach(() => {
-  cleanup();
-});
-
-test("Can add 1 item of a normal product", () => {
-  // Arrange
-  const id = 1; // Philips hue bulb
-  const result: RegExp = /product added to cart/i;
-
-  render(
+function renderWithRouter(id: number) {
+  return render(
     <MemoryRouter initialEntries={[`/path/${id}`]}>
       <Routes>
-        <Route path="/" element={<TestPage />} />
+        <Route path="/" element={<div>fake page</div>} />
         <Route path="/path/:id" element={<Product data={items} />} />
       </Routes>
       <Toaster />
     </MemoryRouter>
   );
+}
+
+test("Can add 1 item of a normal product", () => {
+  // Arrange
+  const id = 1; // Philips hue bulb
+  const result = /product added to cart/i;
+
+  renderWithRouter(id);
 
   // Act
+  // Note: don't re-arrange the const, these are objects created on the fly on every click
   const selectedColor = screen.getByRole("radio", { name: /white/i });
   fireEvent.click(selectedColor);
 
@@ -52,27 +48,19 @@ test("Can add 1 item of a normal product", () => {
   fireEvent.click(button);
 
   // Assert
-  const test = screen.getByText(result);
-
-  expect(test).toBeInTheDocument();
+  const toast = screen.getByText(result);
+  expect(toast).toBeInTheDocument();
 });
 
 test("Can add 1 item of a product with no variants", () => {
   // Arrange
-  const id = 6; // Bluetooth speaker
-  const result: RegExp = /product added to cart/i;
+  const id = 6; // Bluethooh speaker
+  const result = /product added to cart/i;
 
-  render(
-    <MemoryRouter initialEntries={[`/path/${id}`]}>
-      <Routes>
-        <Route path="/" element={<TestPage />} />
-        <Route path="/path/:id" element={<Product data={items} />} />
-      </Routes>
-      <Toaster />
-    </MemoryRouter>
-  );
+  renderWithRouter(id);
 
   // Act
+  // Note: don't re-arrange the const, these are objects created on the fly on every click
   const selectedColor = screen.getByRole("radio", { name: /white/i });
   fireEvent.click(selectedColor);
 
@@ -80,7 +68,6 @@ test("Can add 1 item of a product with no variants", () => {
   fireEvent.click(button);
 
   // Assert
-  const test = screen.getByText(result);
-
-  expect(test).toBeInTheDocument();
+  const toast = screen.getByText(result);
+  expect(toast).toBeInTheDocument();
 });
