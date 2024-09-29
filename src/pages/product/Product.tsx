@@ -62,7 +62,7 @@ export default function Product({ data }: Props) {
     const toastStyle = { backgroundColor: "#29c768", color: "white" };
 
     dispatch({ type: "add-item", payload: newItem });
-    toast("Product added to cart", { position: "bottom-right", style: toastStyle });
+    toast("Product added to cart", { style: toastStyle });
     navigate("/");
   }
 

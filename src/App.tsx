@@ -33,7 +33,7 @@ export default function App() {
   return (
     <div className="app">
       <NavigationBar number={itemsOnCart} />
-      <Toaster />
+      <Toaster position="bottom-right" />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={home} />
