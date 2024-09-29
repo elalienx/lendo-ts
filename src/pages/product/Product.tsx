@@ -50,9 +50,10 @@ export default function Product({ data }: Props) {
   // Methods
   function onChangeOption(newColorIndex: number) {
     const hasVariant = variants.length > 0;
+    const variant = hasVariant ? -1 : 0;
 
     setColorIndex(newColorIndex);
-    setVariantIndex(hasVariant ? -1 : 0); // if product has no variant, this allows to enable the button
+    setVariantIndex(variant);
     setSelectedQuantity(1);
   }
 
