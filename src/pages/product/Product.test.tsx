@@ -1,7 +1,7 @@
 // Node modules
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { expect, test } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { expect, test, afterEach } from "vitest";
+import { fireEvent, render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Project files
@@ -21,18 +21,15 @@ function TestPage() {
   );
 }
 
-test.todo("Can add 1 item of a normal product", () => {
+// Ensure the DOM is cleaned up after each test
+afterEach(() => {
+  cleanup();
+});
+
+test("Can add 1 item of a normal product", () => {
   // Arrange
   const id = 1; // Philips hue bulb
   const result: RegExp = /product added to cart/i;
-
-  function TestPage() {
-    return (
-      <div>
-        <h1>Test Page</h1>
-      </div>
-    );
-  }
 
   render(
     <MemoryRouter initialEntries={[`/path/${id}`]}>
