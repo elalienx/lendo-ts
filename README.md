@@ -14,24 +14,25 @@ For the full explanation, see the original [project](https://github.com/elalienx
 1. Install dependencies: `pnpm install` (notice the P)
 1. Run the project: `npm run dev`
 
-## Planed improvements
+## Planned
 
 1. Add an enhanced add to cart feature. ⌛️ IN PROGRESS
-1. Match the original Sketch design. (see original project for more info)
-1. Migrated to TypeScript. ✅ DONE
-1. Create a new, enhanced Product page to avoid `useEffect()` ✅ DONE
-
-## Bonus features
-
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
-1. Add Biome linter. ✅ DONE
-1. ~Create custom toast notification to reduce dependencies.~ ❌ I CHANGED MY MIND. The libraty is only 5kb and it has a nice little feature of allowing to stack multiple notifications. Ideal for the Checkout page where you can remove multiple items in a short ammount of time.
-
-## Pending
-
 1. Improve `<QuantityChooser>` by adding an input number.
+1. Add Testing Library Test to Product page to hanlde products with no variant.
+
+## Done
+
+1. Migrated to TypeScript.
 1. Improve `<CartItem>` userfulness by mentioning the selected color and variant.
-1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side. ✅ DONE
-1. Improve `<InputRadio>` for variants by using proposed design in Sketch. ✅ DONE
-1. Add state to input radio fixture. ✅ DONE
-1. Add Checkout fixture page. ✅ DONE
+1. Create a new, enhanced Product page to avoid `useEffect()`
+1. Improve `<InputRadio>` for variants by using proposed design in Sketch.
+1. Add Biome linter.
+1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
+1. Add Checkout fixture page.
+1. Add state to input radio fixture.
+1. tch the original Sketch design.
+
+## Cancelled
+
+1. Create custom toast notification to reduce dependencies: I changed my mind, the libraty is only 5kb and it has a nice little feature of allowing to stack multiple notifications. Ideal for the Checkout page where you can remove multiple items in a short ammount of time.

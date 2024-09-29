@@ -1,9 +1,7 @@
 // Project files
 import type ProductOption from "types/ProductOption";
 
-type variants = string[] | number[];
-
-export default function extractVariant(option: ProductOption, keysToRemove: string[]): variants {
+function extractVariant(option: ProductOption, keysToRemove: string[]): string[] | number[] {
   // Properties
   const cloneOption = { ...option } as { [key: string]: any };
   let result;
@@ -13,3 +11,5 @@ export default function extractVariant(option: ProductOption, keysToRemove: stri
 
   return result;
 }
+
+export default extractVariant;
