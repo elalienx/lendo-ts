@@ -27,6 +27,16 @@ image {
   color: var(--color-red);
 }
 
+.toast-good {
+  background-color: var(--color-green);
+  color: white;
+}
+
+.toast-bad {
+  background-color: var(--color-red);
+  color: white;
+}
+
 /* Desktop */
 @media (min-width: 750px) {
   .page {

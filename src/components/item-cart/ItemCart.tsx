@@ -55,9 +55,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   }
 
   function onDelete() {
-    const toastStyle = { backgroundColor: "#e70d5a", color: "white" };
-
-    toast("Deleted item from cart", { style: toastStyle });
+    toast("Deleted item from cart", { className: "toast-bad" });
     dispatch({ type: "delete-item", payload: index });
   }
 
