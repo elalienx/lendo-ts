@@ -17,6 +17,7 @@ import type Product from "types/Product";
 import QuantityChooser from "../../components/quantity-chooser/QuantityChooser";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
+import Header from "./components/Header";
 
 interface Props {
   data: Product[];
@@ -41,11 +42,10 @@ export default function Product({ data }: Props) {
 
   // Properties
   const colors = product.options.flatMap((item) => item.color);
-  const selectedOption = product.options[colorIndex];
-  const unitsLeft = selectedOption.quantity;
-  const variants = extractVariant(selectedOption, ["color", "quantity"]);
-  const extraDetails = `By ${product.brand} | Weight ${product.weight} kg`;
-  const total = Number(product.price) * selectedQuantity;
+  const productOption = product.options[colorIndex];
+  const unitsLeft = productOption.quantity;
+  const variants = extractVariant(productOption, ["color", "quantity"]);
+  const totalPrice = Number(product.price) * selectedQuantity;
   const buttonIsEnabled = variantIndex > -1 && unitsLeft > 0;
 
   // Methods
@@ -68,10 +68,7 @@ export default function Product({ data }: Props) {
   return (
     <div id="product" className="page">
       <ImageThumbnail image={""} alt={""} />
-      <header className="header">
-        <h1>{product.name}</h1>
-        <small>{extraDetails}</small>
-      </header>
+      <Header item={product} />
       <div className="content-group">
         <section className="color">
           <h2>Color:</h2>
@@ -85,7 +82,7 @@ export default function Product({ data }: Props) {
           <h2>Quantity:</h2>
           <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
         </section>
-        <PriceTotal label={"Price"} price={total} />
+        <PriceTotal label={"Price"} price={totalPrice} />
         <Button icon={"bag-shopping"} onClick={addToCart} disabled={!buttonIsEnabled}>
           Add to cart
         </Button>

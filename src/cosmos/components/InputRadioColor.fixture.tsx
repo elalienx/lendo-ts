@@ -7,7 +7,13 @@ import InputRadioColor from "components/input-radio-color/InputRadioColor";
 // Properties
 const options = ["red", "green", "blue", "yellow", "black", "white", "gray"];
 
-function Decorator({ intialValue }: { intialValue: number }) {
+// Decorator
+interface Props {
+  intialValue: number;
+  options: string[];
+}
+
+function Decorator({ intialValue, options = [] }: Props) {
   // Local state
   const [index, setIndex] = useState(intialValue);
 
@@ -15,6 +21,7 @@ function Decorator({ intialValue }: { intialValue: number }) {
 }
 
 export default {
-  Default: <Decorator intialValue={-1} />, // unset by default
-  Active: <Decorator intialValue={3} />, // middle option selected
+  Default: <Decorator intialValue={-1} options={options} />, // unset by default
+  Active: <Decorator intialValue={3} options={options} />, // middle option selected
+  NoOptions: <Decorator intialValue={-1} options={[]} />, // empty options on purpose
 };

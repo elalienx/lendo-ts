@@ -14,7 +14,7 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
   const [quantity, setQuantity] = state;
 
   // Safeguard
-  if (unitsLeft === 0) return <small className="no-units-left">No units left</small>;
+  if (unitsLeft === 0) return <small className="text-warning">No units left</small>;
 
   // Methods
   function addQuantity() {

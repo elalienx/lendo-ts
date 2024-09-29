@@ -6,7 +6,3 @@
     margin-bottom: var(--space-small);
   }
 }
-
-.no-units-left {
-  color: var(--color-red);
-}

@@ -14,6 +14,9 @@ interface Props {
 }
 
 export default function InputRadio({ id, state, options }: Props) {
+  // Safeguard
+  if (!options.length) return <small className="text-warning">No options available</small>;
+
   // Components
   const Options = options.map((item, index) => (
     <Radio key={`${id}-${index}`} id={id} index={index} state={state} name={item} />

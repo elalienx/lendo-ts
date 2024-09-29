@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Project files
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
-import NotAvailable from "components/not-available/NotAvailable";
 import PriceTag from "components/price-tag/PriceTag";
 import type Product from "types/Product";
 import "./item-product.css";
@@ -19,6 +18,9 @@ export default function ItemProduct({ item }: Props) {
   const link = available ? `product/${id}` : "#";
   const parsedPrice = Number(price);
 
+  // Components
+  const NotAvailable = <small className="text-warning">Not available</small>;
+
   return (
     <Link to={link} className={`item-product ${!available && "dissabled"}`}>
       {/* Left mobile, top desktop */}
@@ -28,7 +30,7 @@ export default function ItemProduct({ item }: Props) {
       <div className="text-group">
         <p className="name">{name}</p>
         <small className="brand">{brand}</small>
-        {!available && <NotAvailable />}
+        {!available && NotAvailable}
       </div>
 
       {/* Right mobile, bottom desktop */}
