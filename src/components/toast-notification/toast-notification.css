@@ -1,5 +1,7 @@
 .toast-notification {
   background-color: var(--color-green);
+  padding: var(--space-small) var(--space-medium);
+  border-radius: var(--border-radius);
 
   .icon {
     margin-right: var(--space-small);

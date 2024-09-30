@@ -14,7 +14,12 @@ function Decorator() {
   return (
     <div>
       <button onClick={openToast}>Open toast</button>
-      <Toaster position="bottom-right" />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          className: "toaster",
+        }}
+      />
     </div>
   );
 }
