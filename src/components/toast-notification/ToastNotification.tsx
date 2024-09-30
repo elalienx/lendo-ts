@@ -20,7 +20,7 @@ function ToastNotification({ title, icon_prefix = "fas", icon, color = "green" }
   return (
     <div className={`toast-notification ${color}`}>
       <FontAwesomeIcon icon={[icon_prefix, icon]} />
-      {title}
+      <small className="title">{title}</small>
     </div>
   );
 }

@@ -8,18 +8,13 @@ import toast from "react-hot-toast";
 function Decorator() {
   // Methods
   function openToast() {
-    toast(<ToastNotification title={"Added to cart"} icon={"bag-shopping"} color={"red"} />);
+    toast(<ToastNotification title={"Added to cart"} icon={"bag-shopping"} color={"green"} />);
   }
 
   return (
     <div>
       <button onClick={openToast}>Open toast</button>
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          className: "toaster",
-        }}
-      />
+      <Toaster position="bottom-right" toastOptions={{ className: "toaster" }} />
     </div>
   );
 }
