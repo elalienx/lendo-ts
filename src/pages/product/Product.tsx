@@ -42,8 +42,8 @@ export default function Product({ data }: Props) {
   // Properties
   const productOption = product.options[colorIndex];
   const colors = product.options.flatMap((item) => item.color);
-  const unitsLeft = productOption.quantity;
   const variants = extractVariant(productOption, ["color", "quantity"]);
+  const unitsLeft = productOption.quantity;
   const totalPrice = Number(product.price) * selectedQuantity;
   const buttonIsEnabled = variantIndex > -1 && unitsLeft > 0;
 
