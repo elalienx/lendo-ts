@@ -1,0 +1,25 @@
+.toast-notification {
+  --color: white;
+
+  background-color: var(--color-gray);
+  padding: var(--space-medium);
+  border-radius: var(--border-radius);
+
+  .icon {
+    color: var(--color);
+    margin-right: var(--space-small);
+    margin-top: 2px; /** to align to small text **/
+  }
+
+  .title {
+    color: var(--color);
+  }
+}
+
+.toast-notification.green {
+  background-color: var(--color-green);
+}
+
+.toast-notification.red {
+  background-color: var(--color-red);
+}
