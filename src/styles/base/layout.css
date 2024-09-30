@@ -28,12 +28,13 @@ image {
 }
 
 .toaster {
+  /** Note: Using !important isn’t ideal, but this plugin requires it due to inconsistent behavior between development and production. */
   border: none;
   background-color: transparent;
-  padding: 0;
+  padding: 0 !important;
 
   & > div {
-    margin: 0;
+    margin: 0 !important;
   }
 }
 
