@@ -1,7 +1,7 @@
 // Project files
 import FontAwesomeIcon from "components/font-awesome/FontAwesomeIcon";
-import Color from "types/Color";
-import IconPrefix from "types/IconPrefix";
+import type Color from "types/Color";
+import type IconPrefix from "types/IconPrefix";
 import "./toast-notification.css";
 
 interface Props {

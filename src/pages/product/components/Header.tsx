@@ -1,5 +1,5 @@
 // Project files
-import Product from "types/Product";
+import type Product from "types/Product";
 
 interface Props {
   item: Product;

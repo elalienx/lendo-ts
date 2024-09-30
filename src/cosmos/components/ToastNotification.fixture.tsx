@@ -4,8 +4,8 @@ import ToastNotification from "components/toast-notification/ToastNotification";
 // Node modules
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
-import Color from "types/Color";
-import IconPrefix from "types/IconPrefix";
+import type Color from "types/Color";
+import type IconPrefix from "types/IconPrefix";
 
 // Decorator
 interface Props {
