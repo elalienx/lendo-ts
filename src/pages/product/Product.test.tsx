@@ -29,7 +29,7 @@ function renderWithRouter(id: number) {
   );
 }
 
-test("Can add 1 item of a normal product", () => {
+test("Adds 1 item of a normal product", () => {
   // Arrange
   const id = 1; // Philips hue bulb
   const result = /product added to cart/i;
@@ -37,7 +37,7 @@ test("Can add 1 item of a normal product", () => {
   renderWithRouter(id);
 
   // Act
-  // Note: don't re-arrange the const, these are objects created on the fly on every click
+  // Note: don't re-arrange the const, these objects are created on the fly on every click
   const selectedColor = screen.getByRole("radio", { name: /white/i });
   fireEvent.click(selectedColor);
 
@@ -48,11 +48,11 @@ test("Can add 1 item of a normal product", () => {
   fireEvent.click(button);
 
   // Assert
-  const toast = screen.getByText(result);
+  const toast = screen.queryByText(result);
   expect(toast).toBeInTheDocument();
 });
 
-test("Can add 1 item of a product with no variants", () => {
+test("Adds 1 item of a product with no variants", () => {
   // Arrange
   const id = 6; // Bluethooh speaker
   const result = /product added to cart/i;
@@ -60,7 +60,7 @@ test("Can add 1 item of a product with no variants", () => {
   renderWithRouter(id);
 
   // Act
-  // Note: don't re-arrange the const, these are objects created on the fly on every click
+  // Note: don't re-arrange the const, these objects are created on the fly on every click
   const selectedColor = screen.getByRole("radio", { name: /white/i });
   fireEvent.click(selectedColor);
 
@@ -68,6 +68,29 @@ test("Can add 1 item of a product with no variants", () => {
   fireEvent.click(button);
 
   // Assert
-  const toast = screen.getByText(result);
+  const toast = screen.queryByText(result);
   expect(toast).toBeInTheDocument();
+});
+
+test("Blocks a product with no units left from being added", () => {
+  // Arrange
+  const id = 2; // Trådfria Lampor
+  const result = /product added to cart/i;
+
+  renderWithRouter(id);
+
+  // Act
+  // Note: don't re-arrange the const, these objects are created on the fly on every click
+  const selectedColor = screen.getByRole("radio", { name: /green/i });
+  fireEvent.click(selectedColor);
+
+  const selectedVariant = screen.getByRole("radio", { name: "6.5" });
+  fireEvent.click(selectedVariant);
+
+  const button = screen.getByRole("button", { name: /add to cart/i });
+  fireEvent.click(button);
+
+  // Assert
+  const toast = screen.queryByText(result);
+  expect(toast).not.toBeInTheDocument();
 });
