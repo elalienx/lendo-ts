@@ -12,6 +12,7 @@ import InputRadioColor from "components/input-radio-color/InputRadioColor";
 import PriceTotal from "components/price-total/PriceTotal";
 import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 import extractVariant from "scripts/extractVariant";
+import Notification from "components/toast-notification/ToastNotification";
 import { useCart } from "state/CartContext";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
@@ -62,7 +63,7 @@ export default function Product({ data }: Props) {
     const newItem: CartItem = { product_id, colorIndex, variantIndex, selectedQuantity };
 
     dispatch({ type: "add-item", payload: newItem });
-    toast("Product added to cart", { className: "toast-good" });
+    toast(<Notification title={"Product added to cart"} icon={"bag-shopping"} color={"green"} />);
     navigate("/");
   }
 
