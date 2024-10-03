@@ -18,6 +18,7 @@ import QuantityChooser from "../../components/quantity-chooser/QuantityChooser";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
 import Header from "./components/Header";
+import findItemIndex from "state/actions/findItem";
 
 interface Props {
   data: Product[];
@@ -27,14 +28,15 @@ export default function Product({ data }: Props) {
   // Global state
   const navigate = useNavigate();
   const { id } = useParams();
-  const { dispatch } = useCart();
+  const { cart, dispatch } = useCart();
 
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
-  const [variantIndex, setVariantIndex] = useState(-1); // unset by default
+  const [variantIndex, setVariantIndex] = useState(0); // unset by default
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  const product: Product | undefined = data.find((item) => item.id === Number(id));
+  const productId = Number(id);
+  const product: Product | undefined = data.find((item) => item.id === productId);
 
   // Safeguards
   if (!product) return <EmptyState item={EmptyStateTexts.does_not_exist} />;
@@ -43,7 +45,12 @@ export default function Product({ data }: Props) {
   // Properties
   const colors = product.options.flatMap((item) => item.color);
   const productOption = product.options[colorIndex];
-  const unitsLeft = productOption.quantity;
+
+  const productInCartIndex = findItemIndex(cart, { productId, colorIndex, variantIndex });
+  const unitsAlreadySelected =
+    productInCartIndex === -1 ? 0 : cart[productInCartIndex].selectedQuantity;
+  const unitsLeft = productOption.quantity - unitsAlreadySelected;
+
   const variants = extractVariant(productOption, ["color", "quantity"]);
   const totalPrice = Number(product.price) * selectedQuantity;
   const buttonIsEnabled = variantIndex > -1 && unitsLeft > 0;
@@ -51,12 +58,11 @@ export default function Product({ data }: Props) {
   // Methods
   function onChangeOption(newColorIndex: number) {
     setColorIndex(newColorIndex);
-    setVariantIndex(-1);
+    setVariantIndex(0);
     setSelectedQuantity(1);
   }
 
   function addToCart() {
-    const productId = Number(id);
     const newItem: CartItem = { productId, colorIndex, variantIndex, selectedQuantity };
     const toastStyle = { backgroundColor: "#29c768", color: "white" };
 
