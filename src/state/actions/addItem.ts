@@ -1,8 +1,8 @@
 // Project files
+import findItemIndex from "scripts/findItemIndex";
 import type CartItem from "types/CartItem";
-import findItemIndex from "./findItem";
 
-export default function addItem(state: CartItem[], payload: CartItem) {
+export default function addItem(state: CartItem[], payload: CartItem): CartItem[] {
   const { productId, colorIndex, variantIndex, selectedQuantity } = payload;
   const index = findItemIndex(state, { productId, colorIndex, variantIndex });
 

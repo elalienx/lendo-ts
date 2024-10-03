@@ -1,7 +1,7 @@
 // Project files
 import type CartItem from "types/CartItem";
 
-export default function deleteItem(state: CartItem[], payload: number) {
+export default function deleteItem(state: CartItem[], payload: number): CartItem[] {
   // Properties
   const index = payload;
   const result = [...state];

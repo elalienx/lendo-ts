@@ -14,7 +14,7 @@ import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 import extractVariant from "scripts/extractVariant";
 import Notification from "components/toast-notification/ToastNotification";
 import { useCart } from "state/CartContext";
-import findItemIndex from "state/actions/findItem";
+import findItemIndex from "scripts/findItemIndex";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import Header from "./components/Header";

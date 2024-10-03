@@ -2,7 +2,7 @@
 import { expect, test } from "vitest";
 
 // Project files
-import findItem from "./findItem";
+import findItem from "./findItemIndex";
 import CartItem from "types/CartItem";
 
 test("Returns -1 if cannot find a matching product in cart", () => {
