@@ -11,26 +11,26 @@ interface Props {
 }
 
 export default function QuantityChooser({ state, unitsLeft }: Props) {
-  const [quantity, setQuantity] = state;
+  const [value, setValue] = state;
 
   // Safeguard
   if (unitsLeft === 0) return <small className="text-warning">No units left</small>;
 
   // Methods
   function addQuantity() {
-    if (quantity < unitsLeft) setQuantity(quantity + 1);
+    if (value < unitsLeft) setValue(value + 1);
   }
 
   function removeQuantity() {
-    if (quantity > 1) setQuantity(quantity - 1);
+    if (value > 1) setValue(value - 1);
   }
 
   return (
     <section className="quantity-chooser">
       <div className="content">
-        <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={quantity === 1} />
-        {quantity}
-        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={quantity === unitsLeft} />
+        <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={value === 1} />
+        {value}
+        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />
       </div>
       <small>Units left ×{unitsLeft}</small>
     </section>

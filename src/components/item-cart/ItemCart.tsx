@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 // Project files
 import ButtonCircle from "components/button-circle/ButtonCircle";
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
+import Notification from "components/toast-notification/ToastNotification";
 import PriceTag from "components/price-tag/PriceTag";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
@@ -55,9 +56,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   }
 
   function onDelete() {
-    const toastStyle = { backgroundColor: "#e70d5a", color: "white" };
-
-    toast("Deleted item from cart", { position: "bottom-right", style: toastStyle });
+    toast(<Notification title={"Deleted item from cart"} icon={"trash-can"} color={"red"} />);
     dispatch({ type: "delete-item", payload: index });
   }
 

@@ -27,6 +27,17 @@ image {
   color: var(--color-red);
 }
 
+.toaster {
+  /** Note: Using !important isn’t ideal, but this plugin requires it due to inconsistent behavior between development and production. */
+  border: none;
+  background-color: transparent;
+  padding: 0 !important;
+
+  & > div {
+    margin: 0 !important;
+  }
+}
+
 /* Desktop */
 @media (min-width: 750px) {
   .page {
