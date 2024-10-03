@@ -5,7 +5,7 @@ export default function addItem(state: CartItem[], payload: CartItem) {
   const newItem = payload;
   const itemIndex = state.findIndex(
     (item) =>
-      item.product_id === newItem.product_id &&
+      item.productId === newItem.productId &&
       item.colorIndex === newItem.colorIndex &&
       item.variantIndex === newItem.variantIndex
   );

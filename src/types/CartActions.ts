@@ -2,7 +2,7 @@
 import type CartItem from "./CartItem";
 import type ProductOption from "./ProductOption";
 
-type CartActions = AddItem | DeleteItem | IncreaseQuantity | DecreaseQuantity;
+type CartActions = AddItem | DeleteItem | IncreaseQuantity | DecreaseQuantity | FindItemIndex;
 
 interface AddItem {
   type: "add-item";
@@ -25,6 +25,15 @@ interface IncreaseQuantity {
 interface DecreaseQuantity {
   type: "decrease-quantity";
   payload: number; // the index of the item to remove the item quantity
+}
+
+interface FindItemIndex {
+  type: "find-item-index";
+  payload: {
+    productId: number;
+    colorIndex: number;
+    variantIndex: number;
+  };
 }
 
 export default CartActions;

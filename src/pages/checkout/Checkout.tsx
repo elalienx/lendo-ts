@@ -20,7 +20,7 @@ export default function Checkout({ data }: Props) {
   // Properties
   // Refactor into a separate, testable method
   const matchingProducts: Product[] = cart
-    .map((item) => data.find((product) => product.id === item.product_id) || null)
+    .map((item) => data.find((product) => product.id === item.productId) || null)
     .filter((product): product is Product => product !== null);
   const grandTotal = calculateGrandTotal(matchingProducts, cart);
 

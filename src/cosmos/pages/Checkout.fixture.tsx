@@ -10,9 +10,9 @@ import type CartItem from "types/CartItem";
 // Properties
 const { items } = Data;
 const cartItems: CartItem[] = [
-  { product_id: 1, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
-  { product_id: 2, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 },
-  { product_id: 3, colorIndex: 0, variantIndex: 0, selectedQuantity: 3 },
+  { productId: 1, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
+  { productId: 2, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 },
+  { productId: 3, colorIndex: 0, variantIndex: 0, selectedQuantity: 3 },
 ];
 
 // Decorators

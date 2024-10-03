@@ -1,4 +1,6 @@
-export default interface CartItem {
+import CartItem from "types/CartItem";
+
+interface Payload {
   /** The id of the product in the inventory.json used to brind the product description and price. */
   productId: number;
 
@@ -7,7 +9,10 @@ export default interface CartItem {
 
   /** Specific variant of a prodcut like 250 or 500 GB of storage. */
   variantIndex: number;
-
-  /** The amount of units the user decided to purchase. */
-  selectedQuantity: number;
 }
+
+function findItemIndex(state: CartItem[], payload: Payload): number {
+  return -1;
+}
+
+export default findItemIndex;
