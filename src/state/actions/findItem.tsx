@@ -12,7 +12,17 @@ interface Payload {
 }
 
 function findItemIndex(state: CartItem[], payload: Payload): number {
-  return -1;
+  const { productId, colorIndex, variantIndex } = payload;
+
+  // Properties
+  const result = state.findIndex(
+    (item) =>
+      item.productId === productId &&
+      item.colorIndex === colorIndex &&
+      item.variantIndex === variantIndex
+  );
+
+  return result;
 }
 
 export default findItemIndex;

@@ -1,23 +1,19 @@
 // Project files
 import type CartItem from "types/CartItem";
+import findItemIndex from "./findItem";
 
 export default function addItem(state: CartItem[], payload: CartItem) {
-  const newItem = payload;
-  const itemIndex = state.findIndex(
-    (item) =>
-      item.productId === newItem.productId &&
-      item.colorIndex === newItem.colorIndex &&
-      item.variantIndex === newItem.variantIndex
-  );
+  const { productId, colorIndex, variantIndex, selectedQuantity } = payload;
+  const index = findItemIndex(state, { productId, colorIndex, variantIndex });
 
   // Safeguard
-  if (itemIndex === -1) return [...state, newItem];
+  if (index === -1) return [...state, payload];
 
   const updatedState = [...state];
-  const updatedItem = { ...updatedState[itemIndex] };
+  const updatedItem = { ...updatedState[index] };
 
-  updatedItem.selectedQuantity += newItem.selectedQuantity;
-  updatedState[itemIndex] = updatedItem;
+  updatedItem.selectedQuantity += selectedQuantity;
+  updatedState[index] = updatedItem;
 
   return updatedState;
 }
