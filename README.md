@@ -21,18 +21,17 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ## Done
 
+1. Migrated to TypeScript.
 1. Add an enhanced add to cart feature.
 1. Add Testing Library Test to Product page to hanlde products with no variant.
-1. Migrated to TypeScript.
 1. Improve `<CartItem>` userfulness by mentioning the selected color and variant.
 1. Create a new, enhanced Product page to avoid `useEffect()`
 1. Improve `<InputRadio>` for variants by using proposed design in Sketch.
-1. Add Biome linter.
 1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
-1. Add Checkout fixture page.
+1. Add Biome linter.
 1. Add state to input radio fixture.
-1. tch the original Sketch design.
+1. Add Checkout fixture page.
 
 ## Cancelled
 
-1. Create custom toast notification to reduce dependencies: I changed my mind, the libraty is only 5kb and it has a nice little feature of allowing to stack multiple notifications. Ideal for the Checkout page where you can remove multiple items in a short ammount of time.
+1. Create custom toast notification to reduce dependencies: I changed my mind, the library is only 5kb and it has the feature of stacking multiple notifications. Ideal for the Checkout page where you can remove multiple items at the same time.
