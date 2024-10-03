@@ -19,6 +19,9 @@ import type Product from "types/Product";
 import Header from "./components/Header";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
+import Header from "./components/Header";
+import findItemIndex from "state/actions/findItem";
+
 
 interface Props {
   data: Product[];
@@ -28,12 +31,15 @@ export default function Product({ data }: Props) {
   // Global state
   const navigate = useNavigate();
   const { id } = useParams();
-  const { dispatch } = useCart();
+  const { cart, dispatch } = useCart();
 
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
-  const [variantIndex, setVariantIndex] = useState(-1); // unset by default
+  const [variantIndex, setVariantIndex] = useState(0); // unset by default
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  const productId = Number(id);
+  const product: Product | undefined = data.find((item) => item.id === productId);
 
   // Safeguards
   const product: Product | undefined = data.find((item) => item.id === Number(id));
@@ -42,6 +48,11 @@ export default function Product({ data }: Props) {
 
   // Properties
   const productOption = product.options[colorIndex];
+
+  const productCartIndex = findItemIndex(cart, { productId, colorIndex, variantIndex });
+  const unitsAlreadySelected =
+    productCartIndex === -1 ? 0 : cart[productCartIndex].selectedQuantity;
+  const unitsLeft = productOption.quantity - unitsAlreadySelected;
   const colors = product.options.flatMap((item) => item.color);
   const variants = extractVariant(productOption, ["color", "quantity"]);
   const unitsLeft = productOption.quantity;
@@ -51,16 +62,16 @@ export default function Product({ data }: Props) {
   // Methods
   function onChangeOption(newColorIndex: number) {
     const hasVariant = variants.length > 0;
-    const variant = hasVariant ? -1 : 0;
 
     setColorIndex(newColorIndex);
-    setVariantIndex(variant);
+    setVariantIndex(0);
     setSelectedQuantity(1);
   }
 
   function addToCart() {
+    const newItem: CartItem = { productId, colorIndex, variantIndex, selectedQuantity };
+    const toastStyle = { backgroundColor: "#29c768", color: "white" };
     const product_id = Number(id);
-    const newItem: CartItem = { product_id, colorIndex, variantIndex, selectedQuantity };
 
     dispatch({ type: "add-item", payload: newItem });
     toast(<Notification title={"Product added to cart"} icon={"bag-shopping"} color={"green"} />);

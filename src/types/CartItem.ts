@@ -1,6 +1,6 @@
 export default interface CartItem {
   /** The id of the product in the inventory.json used to brind the product description and price. */
-  product_id: number;
+  productId: number;
 
   /** The color of a product as as the index to know what variant to use. */
   colorIndex: number;

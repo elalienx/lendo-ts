@@ -44,13 +44,13 @@ const product: Product = {
   ],
 };
 const itemWithOneUnit: CartItem = {
-  product_id: 1, // matches product id
+  productId: 1, // matches product id
   colorIndex: 0, // matches the first option: {color: "white", power: [6.5, 9.5], quantity: 1}
   variantIndex: 1, // matches power: 6.5
   selectedQuantity: 1, // how many items of this product the user added to the cart
 };
 const itemWithManyUnits: CartItem = {
-  product_id: 1, // matches product id
+  productId: 1, // matches product id
   colorIndex: 1, // matches the second option: {color: "red", power: [6.5, 9.5], quantity: 10}
   variantIndex: 1, // matches power: 6.5
   selectedQuantity: 10, // how many items of this product the user added to the cart
