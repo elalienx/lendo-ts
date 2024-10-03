@@ -14,14 +14,12 @@ import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 import extractVariant from "scripts/extractVariant";
 import Notification from "components/toast-notification/ToastNotification";
 import { useCart } from "state/CartContext";
+import findItemIndex from "state/actions/findItem";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import Header from "./components/Header";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
-import Header from "./components/Header";
-import findItemIndex from "state/actions/findItem";
-
 
 interface Props {
   data: Product[];
@@ -39,10 +37,9 @@ export default function Product({ data }: Props) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const productId = Number(id);
-  const product: Product | undefined = data.find((item) => item.id === productId);
+  const product: Product | undefined = data.find((item) => item.id === Number(id));
 
   // Safeguards
-  const product: Product | undefined = data.find((item) => item.id === Number(id));
   if (!product) return <EmptyState item={EmptyStateTexts.does_not_exist} />;
   if (!product.available) return <EmptyState item={EmptyStateTexts.out_of_stock} />;
 
@@ -55,14 +52,11 @@ export default function Product({ data }: Props) {
   const unitsLeft = productOption.quantity - unitsAlreadySelected;
   const colors = product.options.flatMap((item) => item.color);
   const variants = extractVariant(productOption, ["color", "quantity"]);
-  const unitsLeft = productOption.quantity;
   const totalPrice = Number(product.price) * selectedQuantity;
   const buttonIsEnabled = variantIndex > -1 && unitsLeft > 0;
 
   // Methods
   function onChangeOption(newColorIndex: number) {
-    const hasVariant = variants.length > 0;
-
     setColorIndex(newColorIndex);
     setVariantIndex(0);
     setSelectedQuantity(1);
@@ -70,8 +64,6 @@ export default function Product({ data }: Props) {
 
   function addToCart() {
     const newItem: CartItem = { productId, colorIndex, variantIndex, selectedQuantity };
-    const toastStyle = { backgroundColor: "#29c768", color: "white" };
-    const product_id = Number(id);
 
     dispatch({ type: "add-item", payload: newItem });
     toast(<Notification title={"Product added to cart"} icon={"bag-shopping"} color={"green"} />);
