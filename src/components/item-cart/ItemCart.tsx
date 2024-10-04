@@ -38,7 +38,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
   const color = productOption.color;
-  const extractedVariant = getVariant(productOption, ["color", "quantity"])[variantIndex];
+  const extractedVariant = getVariant(productOption)[variantIndex];
   const variant = extractedVariant ? ` | ${extractedVariant}` : "";
   const details = color + variant;
   const subTotal = Number(price) * selectedQuantity;
