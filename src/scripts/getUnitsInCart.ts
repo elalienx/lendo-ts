@@ -13,9 +13,13 @@ interface SKU {
 }
 
 export default function getUnitsInCart(cart: CartItem[], sku: SKU): number {
-  const productCartIndex = findItemIndex(cart, sku);
-  const { selectedQuantity } = cart[productCartIndex];
-  const result = productCartIndex === -1 ? 0 : selectedQuantity;
+  const productInCartIndex = findItemIndex(cart, sku);
+  let result = 0;
+
+  // Safeguard
+  if (productInCartIndex === -1) return result;
+
+  result = cart[productInCartIndex].selectedQuantity;
 
   return result;
 }
