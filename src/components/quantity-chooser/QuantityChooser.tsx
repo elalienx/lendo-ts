@@ -25,26 +25,33 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
     if (value > 1) setValue(value - 1);
   }
 
-  function onChange(value: string) {
-    const newValue: number = Number(value);
-    const min: boolean = newValue > 1;
-    const max: boolean = newValue <= unitsLeft;
+  function onChange(stringValue: string) {
+    const newValue = Number(stringValue);
+    const isNumber = !Number.isNaN(newValue);
 
-    if (min && max) setValue(newValue);
+    if (isNumber) setValue(newValue);
+  }
+
+  function onBlur(stringValue: string) {
+    const newValue = Number(stringValue);
+
+    if (newValue > unitsLeft) setValue(unitsLeft);
+    if (newValue < 1) setValue(1);
   }
 
   return (
     <section className="quantity-chooser">
       <div className="content">
         <input
-          disabled={value === 0}
+          type="number"
+          max={unitsLeft}
           value={value}
-          onChange={(event) => {
-            onChange(event?.target.value);
-          }}
+          onChange={(event) => onChange(event.target.value)}
+          onBlur={(event) => onBlur(event.target.value)}
         />
         <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={value === 1} />
-        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />
+        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />@
+        {value}@
       </div>
       <small>Units left ×{unitsLeft}</small>
     </section>
