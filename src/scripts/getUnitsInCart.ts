@@ -1,7 +1,7 @@
 // Project files
 import findItemIndex from "./findItemIndex";
 import type CartItem from "types/CartItem";
-import SKU from "types/SKU";
+import type SKU from "types/SKU";
 
 export default function getUnitsInCart(cart: CartItem[], sku: SKU): number {
   const productInCartIndex = findItemIndex(cart, sku);
