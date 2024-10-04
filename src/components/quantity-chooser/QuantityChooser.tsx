@@ -34,9 +34,18 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
 
   function onBlur(stringValue: string) {
     const newValue = Number(stringValue);
+    const removeZeroes = stringValue.replace(/^0+/, "");
 
-    if (newValue > unitsLeft) setValue(unitsLeft);
-    if (newValue < 1) setValue(1);
+    switch (true) {
+      case newValue > unitsLeft:
+        return setValue(unitsLeft);
+
+      case newValue < 1:
+        return setValue(1);
+
+      default:
+        return setValue(removeZeroes);
+    }
   }
 
   return (
@@ -50,8 +59,7 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
           onBlur={(event) => onBlur(event.target.value)}
         />
         <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={value === 1} />
-        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />@
-        {value}@
+        <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />
       </div>
       <small>Units left ×{unitsLeft}</small>
     </section>

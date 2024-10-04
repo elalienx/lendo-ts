@@ -17,6 +17,14 @@
     font-size: var(--font-size-normal);
   }
 
+  input:hover {
+    border: solid 2px var(--color-gray);
+  }
+
+  input:focus {
+    border: solid 2px var(--color-yellow);
+  }
+
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
