@@ -37,9 +37,6 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
     <section className="quantity-chooser">
       <div className="content">
         <input
-          type="number"
-          min={1}
-          max={unitsLeft}
           disabled={value === 0}
           value={value}
           onChange={(event) => {
