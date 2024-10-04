@@ -12,5 +12,12 @@ export default defineConfig({
     setupFiles: ["./vitest-setup.ts"],
     includeSource: ["src/**/*.{js,ts}"],
     exclude: [...configDefaults.exclude],
+    coverage: {
+      exclude: [
+        "src/cosmos/", // Exclude Cosmos fixtures
+        "src/types/", // Exclude TypeScript custom data types
+        ...configDefaults.exclude, // Default vitest exclusions
+      ],
+    },
   },
 });
