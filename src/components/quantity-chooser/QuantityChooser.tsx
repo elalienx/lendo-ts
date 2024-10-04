@@ -1,7 +1,6 @@
 // Project files
 import ButtonCircle from "components/button-circle/ButtonCircle";
 import "./quantity-chooser.css";
-import { useState } from "react";
 
 interface Props {
   /** The state controlling the quantity. */
@@ -13,9 +12,6 @@ interface Props {
 
 export default function QuantityChooser({ state, unitsLeft }: Props) {
   const [value, setValue] = state;
-
-  // Local state
-  const [lastGoodValue, setLastGoodValue] = useState(value);
 
   // Safeguard
   if (unitsLeft === 0) return <small className="text-warning">No units left</small>;
