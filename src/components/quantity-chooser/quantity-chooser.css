@@ -5,4 +5,15 @@
     gap: var(--space-small);
     margin-bottom: var(--space-small);
   }
+
+  input {
+    width: 80px;
+    height: 32px;
+    padding: var(--space-small) var(--space-medium);
+    border-radius: var(--border-radius);
+    border: none;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: var(--font-size-normal);
+  }
 }

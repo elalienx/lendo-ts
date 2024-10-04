@@ -25,11 +25,25 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
     if (value > 1) setValue(value - 1);
   }
 
+  function onChange(value: string) {
+    const newValue: number = Number(value);
+    const min: boolean = newValue > 1;
+    const max: boolean = newValue <= unitsLeft;
+
+    if (min && max) setValue(newValue);
+  }
+
   return (
     <section className="quantity-chooser">
       <div className="content">
+        <input
+          disabled={value === 0}
+          value={value}
+          onChange={(event) => {
+            onChange(event?.target.value);
+          }}
+        />
         <ButtonCircle icon="minus" onClick={() => removeQuantity()} disabled={value === 1} />
-        {value}
         <ButtonCircle icon="plus" onClick={() => addQuantity()} disabled={value === unitsLeft} />
       </div>
       <small>Units left ×{unitsLeft}</small>
