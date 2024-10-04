@@ -8,7 +8,7 @@ import Notification from "components/toast-notification/ToastNotification";
 import PriceTag from "components/price-tag/PriceTag";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
-import extractVariant from "scripts/extractVariant";
+import getVariant from "scripts/getVariant";
 import { useCart } from "state/CartContext";
 import "./item-cart.css";
 
@@ -38,7 +38,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const productOption = options[colorIndex];
   const quantityAvailable = productOption.quantity;
   const color = productOption.color;
-  const extractedVariant = extractVariant(productOption, ["color", "quantity"])[variantIndex];
+  const extractedVariant = getVariant(productOption, ["color", "quantity"])[variantIndex];
   const variant = extractedVariant ? ` | ${extractedVariant}` : "";
   const details = color + variant;
   const subTotal = Number(price) * selectedQuantity;
