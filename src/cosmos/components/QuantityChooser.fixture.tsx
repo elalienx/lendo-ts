@@ -7,7 +7,7 @@ import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 // Decorator
 function Decorator() {
   // Local state
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // Properties
   const unitsLeft = 10;
