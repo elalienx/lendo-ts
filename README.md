@@ -18,7 +18,6 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
 1. Add end to end test with Playwright.
-1. Improve `<QuantityChooser>` by adding an input number.
 
 ## Done
 
@@ -29,6 +28,7 @@ For the full explanation, see the original [project](https://github.com/elalienx
 1. Create a new, enhanced Product page to avoid `useEffect()`
 1. Improve `<InputRadio>` for variants by using proposed design in Sketch.
 1. Improve `<CartItem>` design by putting the quantiy next to the text, instead of below on desktop as there is space on the side.
+1. Improve `<QuantityChooser>` by adding an input number.
 1. Add Biome linter.
 1. Add state to input radio fixture.
 1. Add Checkout fixture page.
