@@ -1,5 +1,6 @@
-import CartItem from "types/CartItem";
+// Project files
 import findItemIndex from "./findItemIndex";
+import type CartItem from "types/CartItem";
 
 interface SKU {
   /** The id of the product in the inventory.json used to brind the product description and price. */

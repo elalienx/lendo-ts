@@ -1,4 +1,5 @@
-import CartItem from "types/CartItem";
+// Project files
+import type CartItem from "types/CartItem";
 
 interface Payload {
   /** The id of the product in the inventory.json used to brind the product description and price. */
