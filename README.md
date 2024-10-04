@@ -17,6 +17,7 @@ For the full explanation, see the original [project](https://github.com/elalienx
 ## Planned
 
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
+1. Add end to end test with Playwright.
 1. Improve `<QuantityChooser>` by adding an input number.
 
 ## Done
