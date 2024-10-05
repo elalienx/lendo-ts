@@ -20,6 +20,7 @@ test("User purchases products", async ({ page }) => {
   await page.click('button[aria-label="button-minus"]'); // Corrected aria selector
   await page.click("text=Proceed to payment");
 
+  // Step 5: Verify you see the ending message
   page.on("dialog", async (dialog) => {
     expect(dialog.message().toLowerCase()).toContain("End of demo 🎉");
     await dialog.accept();
