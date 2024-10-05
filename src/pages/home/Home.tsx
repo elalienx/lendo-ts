@@ -1,3 +1,6 @@
+// Node modules
+import { useEffect } from "react";
+
 // Project files
 import ItemProduct from "components/item-product/ItemProduct";
 import EmptyState from "components/empty-state/EmptyState";
@@ -15,6 +18,11 @@ export default function Home({ data }: Props) {
 
   // Components
   const Items = data.map((item) => <ItemProduct key={item.id} item={item} />);
+
+  // Methods
+  useEffect(() => {
+    document.title = "Our products | Lendo";
+  }, []);
 
   return (
     <div id="home" className="page">
