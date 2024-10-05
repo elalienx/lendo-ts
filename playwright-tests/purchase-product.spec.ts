@@ -18,9 +18,11 @@ test("User purchases products", async ({ page }) => {
 
   // Step 4: Remove one PlayStation
   await page.click('button[aria-label="button-minus"]'); // Corrected aria selector
+  await expect(page.locator(".price-total .price")).toHaveText("5 000");
+
+  // Step 5: Verify final price and see the ending message
   await page.click("text=Proceed to payment");
 
-  // Step 5: Verify you see the ending message
   page.on("dialog", async (dialog) => {
     expect(dialog.message().toLowerCase()).toContain("End of demo 🎉");
     await dialog.accept();
