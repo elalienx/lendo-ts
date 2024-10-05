@@ -23,5 +23,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Vite build
+        run: pnpm run build
+
       - name: Run Vitest
         run: pnpm run test
