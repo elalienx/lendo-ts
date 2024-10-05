@@ -3,6 +3,14 @@ import { configDefaults, defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+// Properties
+const exludedTestFiles = [
+  "playwright-tests/", // Playwright E2E tests
+  "src/cosmos/", // Cosmos UI fixtures
+  "src/types/", // TypeScript custom data types
+  ...configDefaults.exclude,
+];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
@@ -11,13 +19,7 @@ export default defineConfig({
     environment: "happy-dom",
     setupFiles: ["./vitest-setup.ts"],
     includeSource: ["src/**/*.{js,ts}"],
-    exclude: [...configDefaults.exclude],
-    coverage: {
-      exclude: [
-        "src/cosmos/", // Exclude Cosmos fixtures
-        "src/types/", // Exclude TypeScript custom data types
-        ...configDefaults.exclude, // Default vitest exclusions
-      ],
-    },
+    exclude: exludedTestFiles,
+    coverage: { exclude: exludedTestFiles }, // coverage report has a different config file than the test, hence the repetition
   },
 });
