@@ -4,15 +4,6 @@ import { expect, test } from "vitest";
 // Project files
 import decreaseQuantity from "./decreaseQuantity";
 import type CartItem from "types/CartItem";
-import type ProductOption from "types/ProductOption";
-
-interface Payload {
-  /** The index of the item to remove from cart. */
-  index: number;
-
-  /** The product option to know how many units we have already to not exceed the limit. */
-  productOption: ProductOption;
-}
 
 test("Decreases an item with more than one unit", () => {
   // Arrange
