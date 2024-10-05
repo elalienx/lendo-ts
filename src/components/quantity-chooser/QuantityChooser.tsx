@@ -52,6 +52,7 @@ export default function QuantityChooser({ state, unitsLeft }: Props) {
     <section className="quantity-chooser">
       <div className="content">
         <input
+          name="quantity"
           type="number"
           max={unitsLeft}
           value={value}
