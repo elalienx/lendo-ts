@@ -14,7 +14,7 @@ interface Props {
 export default function NavigationBar({ number }: Props) {
   return (
     <nav className="navigation-bar">
-      <Link to="/">
+      <Link to="/" aria-label="Return to home page">
         <img alt="The company logo with the text Shopping Cart" className="logo" src={Logo} />
       </Link>
       <Link to="checkout">
