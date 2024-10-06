@@ -16,11 +16,12 @@ For the full explanation, see the original [project](https://github.com/elalienx
 
 ## Planned
 
-1. Add end to end test with Playwright. (Playwright goes first to know if the Redux change, breaks anything)
 1. Use Redux instead of ContextAPI to see if it reduces unncecerary re-renders.
+1. Create checkout page in Figma to practice their UI.
 
 ## Done
 
+1. Add end to end test with Playwright.
 1. Migrated to TypeScript.
 1. Add an enhanced add to cart feature.
 1. Add Testing Library Test to Product page to hanlde products with no variant.
