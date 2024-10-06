@@ -6,7 +6,7 @@ import deleteItem from "./actions/deleteItem";
 import type CartItem from "types/CartItem";
 import type CartActions from "types/CartActions";
 
-export default function cartReducer(state: CartItem[], actions: CartActions) {
+export default function cartReducer(state: CartItem[], actions: CartActions): CartItem[] {
   const { type, payload } = actions;
 
   switch (type) {
