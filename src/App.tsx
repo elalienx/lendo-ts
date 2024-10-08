@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 // Project files
 import Loader from "components/loader/Loader";
 import NavigationBar from "components/navigation-bar/NavigationBar";
+import Footer from "components/footer/Footer";
 import Data from "data/inventory.json";
 import { useCart } from "state/CartContext";
 
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="*" element={pageNotFound} />
         </Routes>
       </Suspense>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,8 @@
+.footer {
+  padding: var(--space-big);
+  text-align: center;
+
+  small {
+    text-transform: none;
+  }
+}

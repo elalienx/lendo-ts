@@ -17,10 +17,16 @@ image {
   height: auto;
 }
 
+.app {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+}
+
 .page {
   width: min(960px, 100% - 24px - 24px); /* 24px per side */
   margin-inline: auto;
-  padding: 24px 0 48px;
 }
 
 .text-warning {
@@ -40,7 +46,7 @@ image {
 
 /* Desktop */
 @media (min-width: 750px) {
-  .page {
-    padding: 48px 0;
+  .app {
+    gap: 48px;
   }
 }
