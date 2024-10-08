@@ -1,5 +1,5 @@
 .footer {
-  padding: var(--space-big);
+  padding-bottom: var(--space-big);
   text-align: center;
 
   small {
