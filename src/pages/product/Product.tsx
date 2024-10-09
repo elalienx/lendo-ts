@@ -1,6 +1,6 @@
 // Node modules
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 // Project files
@@ -31,10 +31,14 @@ export default function Product({ data }: Props) {
   const { cart, dispatch } = useCart();
 
   // Local state
-  const [colorIndex, setColorIndex] = useState(0);
-  const [variantIndex, setVariantIndex] = useState(0); // unset by default
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-
+  const [searchParams, setSearchParams] = useSearchParams({
+    colorIndex: "0",
+    variantIndex: "0",
+    selectedQuantity: "1",
+  });
+  const colorIndex = Number(searchParams.get("colorIndex"));
+  const variantIndex = Number(searchParams.get("variantIndex"));
+  const selectedQuantity = Number(searchParams.get("selectedQuantity"));
   const productId = Number(id);
   const product: Product | undefined = data.find((item) => item.id === Number(id));
 
@@ -57,9 +61,19 @@ export default function Product({ data }: Props) {
   }, []);
 
   function onChangeOption(newColorIndex: number) {
-    setColorIndex(newColorIndex);
-    setVariantIndex(0);
-    setSelectedQuantity(1);
+    setSearch("colorIndex", newColorIndex);
+    setSearch("variantIndex", 0);
+    setSearch("selectedQuantity", 1);
+  }
+
+  function setSearch(key: string, value: string | number) {
+    setSearchParams(
+      (prev) => {
+        prev.set(key, String(value));
+        return prev;
+      },
+      { replace: true }
+    );
   }
 
   function addToCart() {
@@ -87,13 +101,17 @@ export default function Product({ data }: Props) {
         {/* Variants */}
         <section className="variant">
           <h2>Variant:</h2>
-          <InputRadio id={"variant"} state={[variantIndex, setVariantIndex]} options={variants} />
+          <InputRadio
+            id={"variant"}
+            state={[variantIndex, () => setSearch("variantIndex", 0)]}
+            options={variants}
+          />
         </section>
 
         {/* Quantity  */}
         <section className="quantity-chooser">
           <h2>Quantity:</h2>
-          <QuantityChooser state={[selectedQuantity, setSelectedQuantity]} unitsLeft={unitsLeft} />
+          <QuantityChooser state={[selectedQuantity, () => {}]} unitsLeft={unitsLeft} />
         </section>
 
         {/* Price */}
