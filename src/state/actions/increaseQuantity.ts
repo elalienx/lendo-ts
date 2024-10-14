@@ -14,14 +14,14 @@ export default function increaseQuantity(state: CartItem[], payload: Payload): C
   const { index, productOption } = payload;
 
   // Properties
-  const newState = [...state];
-  const selectedCartItem = { ...newState[index] };
+  const clonedState = [...state];
+  const clonedItem = { ...clonedState[index] };
 
-  if (selectedCartItem.selectedQuantity < productOption.quantity) {
-    selectedCartItem.selectedQuantity++;
+  if (clonedItem.selectedQuantity < productOption.quantity) {
+    clonedItem.selectedQuantity++;
   }
 
-  newState[index] = selectedCartItem;
+  clonedState[index] = clonedItem;
 
-  return newState;
+  return clonedState;
 }

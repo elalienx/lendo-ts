@@ -4,14 +4,14 @@ import type CartItem from "types/CartItem";
 export default function decreaseQuantity(state: CartItem[], payload: number): CartItem[] {
   // Properties
   const index = payload;
-  const newState = [...state];
-  const selectedCartItem = { ...newState[index] };
+  const clonedState = [...state];
+  const clonedItem = { ...clonedState[index] };
 
-  if (selectedCartItem.selectedQuantity > 1) {
-    selectedCartItem.selectedQuantity -= 1;
+  if (clonedItem.selectedQuantity > 1) {
+    clonedItem.selectedQuantity--;
   }
 
-  newState[index] = selectedCartItem;
+  clonedState[index] = clonedItem;
 
-  return newState;
+  return clonedState;
 }
