@@ -1,19 +1,21 @@
 // Project files
 import findItemIndex from "scripts/findItemIndex";
 import type CartItem from "types/CartItem";
+import type SKU from "types/SKU";
 
 export default function addItem(state: CartItem[], payload: CartItem): CartItem[] {
   const { productId, colorIndex, variantIndex, selectedQuantity } = payload;
-  const index = findItemIndex(state, { productId, colorIndex, variantIndex });
+  const sku: SKU = { productId, colorIndex, variantIndex };
+  const index = findItemIndex(state, sku);
 
   // Safeguard
   if (index === -1) return [...state, payload];
 
-  const updatedState = [...state];
-  const updatedItem = { ...updatedState[index] };
+  const clonedState = [...state];
+  const clonedItem = { ...clonedState[index] };
 
-  updatedItem.selectedQuantity += selectedQuantity;
-  updatedState[index] = updatedItem;
+  clonedItem.selectedQuantity += selectedQuantity;
+  clonedState[index] = clonedItem;
 
-  return updatedState;
+  return clonedState;
 }
