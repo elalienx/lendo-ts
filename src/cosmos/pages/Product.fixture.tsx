@@ -4,11 +4,10 @@ import { MemoryRouter, Routes, Route } from "react-router-dom";
 
 // Project files
 import Product from "pages/product/Product";
-import Data from "data/inventory.json";
+import { items } from "data/inventory.json";
 import { CartProvider } from "state/CartContext";
 
 // Properties
-const { items } = Data;
 const validId = 1; // first product on the inventory list
 const invalidId = 42; // does not exist on the inventory list
 const notAvailable = 5; // this product exist but is not available

@@ -2,13 +2,12 @@
 import type { ReactNode } from "react";
 
 // Project files
-import Data from "data/inventory.json";
+import { items } from "data/inventory.json";
 import Checkout from "pages/checkout/Checkout";
 import { CartProvider } from "state/CartContext";
 import type CartItem from "types/CartItem";
 
 // Properties
-const { items } = Data;
 const cartItems: CartItem[] = [
   { productId: 1, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 },
   { productId: 2, colorIndex: 0, variantIndex: 0, selectedQuantity: 2 },

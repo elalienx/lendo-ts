@@ -3,11 +3,10 @@ import { BrowserRouter } from "react-router-dom";
 
 // Project files
 import Home from "pages/home/Home";
-import Data from "data/inventory.json";
+import { items } from "data/inventory.json";
 import type Product from "types/Product";
 
 // Properties
-const { items } = Data;
 const noItems: Product[] = [];
 
 /**

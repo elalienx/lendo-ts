@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Project files
-import Data from "data/inventory.json";
+import { items } from "data/inventory.json";
 import Home from "./Home";
 import type Product from "types/Product";
 
@@ -16,7 +16,6 @@ import type Product from "types/Product";
  */
 test("Shows product list", () => {
   // Arrange
-  const { items } = Data;
   const result1 = "Philips hue bulb"; // first product
   const result2 = "BenQ GW2765HE Eye-Care"; // last product
 

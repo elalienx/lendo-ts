@@ -7,15 +7,12 @@ import toast, { Toaster } from "react-hot-toast";
 
 // Project files
 import Product from "./Product";
-import Data from "data/inventory.json";
+import { items } from "data/inventory.json";
 
 afterEach(() => {
   cleanup();
   toast.remove();
 });
-
-// Properties
-const { items } = Data;
 
 function renderWithRouter(id: number) {
   return render(
