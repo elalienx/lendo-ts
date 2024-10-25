@@ -50,7 +50,7 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   // Methods
   function onAddQuantity() {
-    increaseQuantity({ index, productOption });
+    increaseQuantity(index, productOption);
   }
 
   function onRemoveQuantity() {

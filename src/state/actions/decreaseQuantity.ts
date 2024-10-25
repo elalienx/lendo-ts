@@ -1,9 +1,8 @@
 // Project files
 import type CartItem from "types/CartItem";
 
-export default function decreaseQuantity(state: CartItem[], payload: number): CartItem[] {
+export default function decreaseQuantity(state: CartItem[], index: number): CartItem[] {
   // Properties
-  const index = payload;
   const clonedState = [...state];
   const clonedItem = { ...clonedState[index] };
 
