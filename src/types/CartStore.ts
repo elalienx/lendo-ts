@@ -1,5 +1,5 @@
 // Project files
-import CartItem from "./CartItem";
+import type CartItem from "./CartItem";
 
 export default interface CartStore {
   cart: CartItem[];

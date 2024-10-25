@@ -6,8 +6,7 @@ import "@testing-library/jest-dom";
 
 // Project files
 import Checkout from "./Checkout";
-import CartItem from "types/CartItem";
-import Product from "types/Product";
+import type Product from "types/Product";
 
 // Properties
 const fakeItems: Product[] = [
@@ -78,10 +77,10 @@ test("Shows empty state message", () => {
 test.todo("Shows the grand total of multiple items", () => {
   // Arrange
   const result = "698";
-  const cart: CartItem[] = [
-    { productId: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Saturn x1 = $399
-    { productId: 30, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // PlayStation x1 = $299
-  ];
+  // const cart: CartItem[] = [
+  //   { productId: 10, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // Saturn x1 = $399
+  //   { productId: 30, colorIndex: 0, variantIndex: 0, selectedQuantity: 1 }, // PlayStation x1 = $299
+  // ];
 
   render(
     <BrowserRouter>
