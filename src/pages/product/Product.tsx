@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -14,11 +14,11 @@ import PriceTotal from "components/price-total/PriceTotal";
 import QuantityChooser from "components/quantity-chooser/QuantityChooser";
 import getVariant from "scripts/getVariant";
 import getUnitsInCart from "scripts/getUnitsInCart";
-import { useCart } from "state/CartContext";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
 import EmptyStateTexts from "./empty-state-texts.json";
 import "./product.css";
+import cartStore from "state/cartStore";
 
 interface Props {
   data: Product[];
@@ -28,7 +28,8 @@ export default function Product({ data }: Props) {
   // Global state
   const navigate = useNavigate();
   const { id } = useParams();
-  const { cart, dispatch } = useCart();
+  const cart = cartStore((state) => state.cart);
+  const addItem = cartStore((state) => state.addItem);
 
   // Local state
   const [colorIndex, setColorIndex] = useState(0);
@@ -52,10 +53,6 @@ export default function Product({ data }: Props) {
   const buttonIsEnabled = unitsLeft > 0;
 
   // Methods
-  useEffect(() => {
-    document.title = `${product.name} | Lendo`;
-  }, []);
-
   function onChangeOption(newColorIndex: number) {
     setColorIndex(newColorIndex);
     setVariantIndex(0);
@@ -65,7 +62,7 @@ export default function Product({ data }: Props) {
   function addToCart() {
     const newItem: CartItem = { productId, colorIndex, variantIndex, selectedQuantity };
 
-    dispatch({ type: "add-item", payload: newItem });
+    addItem(newItem);
     toast(<Notification title={"Product added to cart"} icon={"bag-shopping"} color={"green"} />);
     navigate("/");
   }

@@ -4,7 +4,7 @@ import "./footer.css";
 export default function Footer() {
   // Component
   const GitHubLink = (
-    <a href="https://github.com/elalienx" target="_blank">
+    <a href="https://github.com/elalienx" target="_blank" rel="noreferrer">
       github.com/elalienx
     </a>
   );

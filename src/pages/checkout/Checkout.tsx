@@ -3,12 +3,11 @@ import Button from "components/button/Button";
 import EmptyState from "components/empty-state/EmptyState";
 import ItemCart from "components/item-cart/ItemCart";
 import PriceTotal from "components/price-total/PriceTotal";
-import { useCart } from "state/CartContext";
 import calculateGrandTotal from "scripts/calculateGrandTotal";
 import type Product from "types/Product";
 import EmptyStateText from "./empty-state-text.json";
 import "./checkout.css";
-import { useEffect } from "react";
+import cartStore from "state/cartStore";
 
 interface Props {
   data: Product[];
@@ -16,7 +15,7 @@ interface Props {
 
 export default function Checkout({ data }: Props) {
   // Global state
-  const { cart } = useCart();
+  const cart = cartStore((state) => state.cart);
 
   // Properties
   // Refactor into a separate, testable method
@@ -27,11 +26,6 @@ export default function Checkout({ data }: Props) {
 
   // Safeguards
   if (!cart.length) return <EmptyState item={EmptyStateText} />;
-
-  // Methods
-  useEffect(() => {
-    document.title = "Your cart | Lendo";
-  }, []);
 
   // Components
   const Items = cart.map((item, index) => (
