@@ -5,7 +5,6 @@ import { MemoryRouter, Routes, Route } from "react-router-dom";
 // Project files
 import Product from "pages/product/Product";
 import { items } from "data/inventory.json";
-import { CartProvider } from "state/CartContext";
 
 // Properties
 const validId = 1; // first product on the inventory list
@@ -21,11 +20,9 @@ interface Props {
 function DecoratorRouter({ element, id }: Props) {
   return (
     <MemoryRouter initialEntries={[`/path/${id}`]}>
-      <CartProvider>
-        <Routes>
-          <Route path="/path/:id" element={element} />
-        </Routes>
-      </CartProvider>
+      <Routes>
+        <Route path="/path/:id" element={element} />
+      </Routes>
     </MemoryRouter>
   );
 }

@@ -6,11 +6,11 @@ import ButtonCircle from "components/button-circle/ButtonCircle";
 import ImageThumbnail from "components/image-thumbnail/ImageThumbnail";
 import Notification from "components/toast-notification/ToastNotification";
 import PriceTag from "components/price-tag/PriceTag";
+import getVariant from "scripts/getVariant";
 import type CartItem from "types/CartItem";
 import type Product from "types/Product";
-import getVariant from "scripts/getVariant";
-import { useCart } from "state/CartContext";
 import "./item-cart.css";
+import cartStore from "state/cartStore";
 
 /**
  * Refactor:
@@ -32,7 +32,9 @@ export default function ItemCart({ product, cartItem, index }: Props) {
   const { colorIndex, variantIndex, selectedQuantity } = cartItem;
 
   // Global state
-  const { dispatch } = useCart();
+  const increaseQuantity = cartStore((state) => state.increaseQuantity);
+  const decreaseQuantity = cartStore((state) => state.decreaseQuantity);
+  const deleteItem = cartStore((state) => state.deleteItem);
 
   // Properties
   const productOption = options[colorIndex];
@@ -48,16 +50,16 @@ export default function ItemCart({ product, cartItem, index }: Props) {
 
   // Methods
   function onAddQuantity() {
-    dispatch({ type: "increase-quantity", payload: { index, productOption } });
+    increaseQuantity({ index, productOption });
   }
 
   function onRemoveQuantity() {
-    dispatch({ type: "decrease-quantity", payload: index });
+    decreaseQuantity(index);
   }
 
   function onDelete() {
     toast(<Notification title={"Deleted item from cart"} icon={"trash-can"} color={"red"} />);
-    dispatch({ type: "delete-item", payload: index });
+    deleteItem(index);
   }
 
   return (

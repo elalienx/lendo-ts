@@ -1,30 +1,19 @@
 // Propject files
-import type CartItem from "./CartItem";
-import type ProductOption from "./ProductOption";
+import CartItem from "./CartItem";
+import ProductOption from "./ProductOption";
 
-type CartActions = AddItem | DeleteItem | IncreaseQuantity | DecreaseQuantity;
+// Refactor repeated
+interface Payload {
+  /** The index of the item to remove from cart. */
+  index: number;
 
-interface AddItem {
-  type: "add-item";
-  payload: CartItem; // a new cart item
+  /** The product option to know how many units we have already to not exceed the limit. */
+  productOption: ProductOption;
 }
 
-interface DeleteItem {
-  type: "delete-item";
-  payload: number; // the index of the item to remove from cart
+export default interface CartActions {
+  addItem: (payload: CartItem) => void;
+  decreaseQuantity: (payload: number) => void;
+  deleteItem: (payload: number) => void;
+  increaseQuantity: (payload: Payload) => void;
 }
-
-interface IncreaseQuantity {
-  type: "increase-quantity";
-  payload: {
-    index: number; // the index of the item to remove from cart
-    productOption: ProductOption; // to know how many units we have already to not exceed the limit
-  };
-}
-
-interface DecreaseQuantity {
-  type: "decrease-quantity";
-  payload: number; // the index of the item to remove the item quantity
-}
-
-export default CartActions;

@@ -8,7 +8,7 @@ import Loader from "components/loader/Loader";
 import NavigationBar from "components/navigation-bar/NavigationBar";
 import Footer from "components/footer/Footer";
 import { items } from "data/inventory.json";
-import { useCart } from "state/CartContext";
+import cartStore from "state/cartStore";
 
 // Dynamic imports to improve loading speed
 const Checkout = lazy(() => import("pages/checkout/Checkout"));
@@ -18,7 +18,7 @@ const Product = lazy(() => import("pages/product/Product"));
 
 export default function App() {
   // Global state
-  const { cart } = useCart();
+  const cart = cartStore((state) => state.cart);
 
   // Properties
   const checkout = <Checkout data={items} />;
