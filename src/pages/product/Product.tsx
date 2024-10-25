@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -53,10 +53,6 @@ export default function Product({ data }: Props) {
   const buttonIsEnabled = unitsLeft > 0;
 
   // Methods
-  useEffect(() => {
-    document.title = `${product.name} | Lendo`;
-  }, []);
-
   function onChangeOption(newColorIndex: number) {
     setColorIndex(newColorIndex);
     setVariantIndex(0);

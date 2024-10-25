@@ -7,7 +7,6 @@ import calculateGrandTotal from "scripts/calculateGrandTotal";
 import type Product from "types/Product";
 import EmptyStateText from "./empty-state-text.json";
 import "./checkout.css";
-import { useEffect } from "react";
 import cartStore from "state/cartStore";
 
 interface Props {
@@ -27,11 +26,6 @@ export default function Checkout({ data }: Props) {
 
   // Safeguards
   if (!cart.length) return <EmptyState item={EmptyStateText} />;
-
-  // Methods
-  useEffect(() => {
-    document.title = "Your cart | Lendo";
-  }, []);
 
   // Components
   const Items = cart.map((item, index) => (
