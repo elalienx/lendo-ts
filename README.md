@@ -4,8 +4,6 @@ This is the TypeScript version of the Lendo Shopping Cart exercise. [View demo](
 
 For the full explanation, see the original [project](https://github.com/elalienx/lendo-shopping-cart). This repository covers only the new additions.
 
-⚠️ **Note:** The Product page is **intentionally** missing as it will be rebuilt to improve the add-to-cart feature and refactor the code.
-
 ## Installation
 
 ⚠️ **Note:** This project uses the faster [PNPM](https://pnpm.io) (notice the P) instead of Node Package Manager (NPM withouth P) this allows for faster installations but require one extra step on first time usage.
@@ -13,11 +11,6 @@ For the full explanation, see the original [project](https://github.com/elalienx
 1. Install PNPM: `npm install -g pnpm`.
 1. Install dependencies: `pnpm install` (notice the P)
 1. Run the project: `npm run dev`
-
-## Planned
-
-1. Contanerize and migrate from Node.js to Deno to a better TypeScript developer enviroment.
-1. Experiement with Solid JS to reduce the React source code bloat sent on initial page load.
 
 ## Done
 
